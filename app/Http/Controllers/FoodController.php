@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFoodRequest;
+use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
@@ -33,7 +36,7 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFoodRequest $request)
     {
         //
     }
@@ -57,7 +60,7 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        //
+        return view('admin.foods.edit', compact('food'));
     }
 
     /**
@@ -67,9 +70,27 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food)
+    public function update(UpdateFoodRequest $request, Food $food)
     {
-        //
+        $validated_data = $request->validated();
+        $validated_data['slug'] = Food::generateSlug($request->name);
+
+        $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', '$food->id')->first();
+
+        if ($checkFood) {
+            return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
+        }
+
+        //DA GUARDARE MEGLIO LA GESTIONE DELL'IMMAGINE!
+
+        // if ($request->image) {
+        //     Storage::delete($food->image);
+        //     $image = Storage::disk('public')->put('image_restaurants', $request->image);
+        //     $validatedData['image'] = $image;
+        // }
+
+        $food->update($validated_data);
+        return redirect()->route('admin.foods.show', ['food' => $food->slug]);
     }
 
     /**
@@ -80,6 +101,7 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        //
+        $food->delete();
+        return redirect()->route('admin.foods.index');
     }
 }

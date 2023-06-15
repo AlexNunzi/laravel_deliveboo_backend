@@ -59,6 +59,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+
         //
     }
 
