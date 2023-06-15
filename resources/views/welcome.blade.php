@@ -16,7 +16,7 @@
 
             <p class="col-md-8 fs-4">mi sono rotta</p>
             <a href="https://packagist.org/packages/pacificdev/laravel_9_preset" class="btn btn-primary btn-lg"
-                type="button">wfkjehweifhiwehfiuw</a>
+                type="button">Pull request</a>
         </div>
     </div>
 
