@@ -11,7 +11,7 @@
                 </svg>
             </div>
             <h1 class="display-5 fw-bold">
-                Gruppo 5
+                Gruppo 5 bello
             </h1>
 
             <p class="col-md-8 fs-4">This a preset package with Bootstrap 5 views for laravel projects including laravel
