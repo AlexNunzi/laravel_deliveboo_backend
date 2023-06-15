@@ -6,6 +6,7 @@ use App\Http\Requests\StoreFoodRequest;
 use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -40,31 +41,30 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFoodRequest $request)
     {
-        $user = Restaurant::where('user_id', Auth::user()->id);
-        if($request->has('visibility')){
-            $request['visibility'] = true;
-        }else{
-            $request['visibility'] = false;
+
+        $form_data = $request->validated();
+
+        if ($request->has('visibility')) {
+            $form_data['visibility'] = true;
+        } else {
+            $form_data['visibility'] = false;
         }
-        dd($request);
-        $form_info = $request->validate([
-            'name' => 'required|max:150|unique:food',
-            'price' => 'required|decimal:2',
-            'description' => 'nullable|max:',
-            'image' => 'nullable|',
-            'visibility' => 'required',
-        ]);
-        
-        $form_info['slug'] = Food::generateSlug($request->name);
+
+        $user = User::find(Auth::user()->id);
+
+        $form_data['restaurant_id'] = $user->restaurant->id;
+
+        $form_data['slug'] = Food::generateSlug($request->name);
         if ($request->hasFile('image')) {
             $img_path = Storage::put('image', $request->image);
             $form_info['image'] = $img_path;
         }
-        $newFood = Food::create($form_info);
-        $user->food()->attach($newFood);
-        return redirect()->route('admin.foods.show', ['food' => $newFood->slug]);
+
+        $newFood = Food::create($form_data);
+
+        return redirect()->route('admin.foods.show', ['food' => $newFood->id]);
     }
 
     /**

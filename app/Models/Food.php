@@ -20,7 +20,8 @@ class Food extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public static function generateSlug(string $title) {
+    public static function generateSlug(string $title)
+    {
         return Str::slug($title, '-');
     }
 
@@ -30,6 +31,7 @@ class Food extends Model
         'price',
         'image',
         'visibility',
-        'slug'
+        'slug',
+        'restaurant_id'
     ];
 }
