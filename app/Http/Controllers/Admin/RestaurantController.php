@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,14 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($restaurant_info)
     {
-        //
+       $newRestaurant = new Restaurant();
+       $newRestaurant['slug'] = Restaurant::generateSlug($restaurant_info['name']);
+       $newRestaurant->fill($restaurant_info);
+
+       $newRestaurant->save();
+         return redirect(RouteServiceProvider::HOME);
     }
 
     /**

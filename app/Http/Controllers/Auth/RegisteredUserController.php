@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Http\Controllers\Admin\RestaurantController;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -32,8 +33,13 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'restaurant_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'address' => ['required', 'string', 'max:100'],
+            'p_iva' => ['required', 'string', 'max:12'],
+            'image' => ['nullable','string', 'max:150'],
+            'decription' => ['nullable','string', 'max:2000'],
         ]);
 
         $user = User::create([
@@ -46,6 +52,16 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+       $restaurant_information = new RestaurantController;
+       $restaurant_information->store([
+        'user_id'=> $user->id,
+        'name' => $request->restaurant_name,
+        'address' =>$request->address,
+        'p_iva' =>$request->p_iva,
+        'image' =>'url',
+        'description' =>$request->description,
+
+       ]);
+       return redirect(RouteServiceProvider::HOME);
     }
 }
