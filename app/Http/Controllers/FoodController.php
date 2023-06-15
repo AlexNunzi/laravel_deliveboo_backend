@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFoodRequest;
 use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
@@ -17,7 +19,9 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        $user = Restaurant::find(Auth::user()->id);
+        $foods = $user->foods;
+        return view('admin.foods.index', compact('foods'));
     }
 
     /**
@@ -27,7 +31,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.foods.create');
     }
 
     /**
@@ -36,9 +40,31 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFoodRequest $request)
+    public function store(Request $request)
     {
-        //
+        $user = Restaurant::where('user_id', Auth::user()->id);
+        if($request->has('visibility')){
+            $request['visibility'] = true;
+        }else{
+            $request['visibility'] = false;
+        }
+        dd($request);
+        $form_info = $request->validate([
+            'name' => 'required|max:150|unique:food',
+            'price' => 'required|decimal:2',
+            'description' => 'nullable|max:',
+            'image' => 'nullable|',
+            'visibility' => 'required',
+        ]);
+        
+        $form_info['slug'] = Food::generateSlug($request->name);
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('image', $request->image);
+            $form_info['image'] = $img_path;
+        }
+        $newFood = Food::create($form_info);
+        $user->food()->attach($newFood);
+        return redirect()->route('admin.foods.show', ['food' => $newFood->slug]);
     }
 
     /**
@@ -49,7 +75,7 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
+        return view('admin.foods.show', compact('food'));
     }
 
     /**
