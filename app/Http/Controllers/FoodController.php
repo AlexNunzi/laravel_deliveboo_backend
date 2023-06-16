@@ -20,8 +20,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $user = Restaurant::find(Auth::user()->id);
-        $foods = $user->foods;
+        $user = User::find(Auth::user()->id);
+
+        $foods = Food::where('restaurant_id', $user->restaurant->id)->get();
+
         return view('admin.foods.index', compact('foods'));
     }
 
@@ -64,7 +66,7 @@ class FoodController extends Controller
 
         $newFood = Food::create($form_data);
 
-        return redirect()->route('admin.foods.show', ['food' => $newFood->id]);
+        return redirect()->route('admin.foods.show', ['food' => $newFood->slug]);
     }
 
     /**
