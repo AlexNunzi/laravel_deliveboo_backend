@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class RestaurantController extends Controller
@@ -43,9 +44,16 @@ class RestaurantController extends Controller
 
        $newRestaurant = new Restaurant();
        $newRestaurant['slug'] = Restaurant::generateSlug($restaurant_info['name']);
+
        $newRestaurant->fill($restaurant_info);
 
+       if (array_key_exists('image', $form_data)) {
+        $img_path = Storage::put('image', $form_data['image']);
+        $newRestaurant['image'] = $img_path;
+    }
        $newRestaurant->save();
+
+
 
        if (array_key_exists('type', $form_data)) {
 
