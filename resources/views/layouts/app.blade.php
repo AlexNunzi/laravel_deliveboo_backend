@@ -40,16 +40,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li>
-                            <a href="{{route('admin.foods.index')}}">Cibi</a>
-                        </li>
-                        <li>
-                            <a href="{{route('admin.foods.create')}}">Aggiungi piatto</a>
-                        </li>
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -76,6 +68,8 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                <a class="dropdown-item" href="{{route('admin.foods.index')}}">Cibi</a>
+                                <a class="dropdown-item" href="{{route('admin.foods.create')}}">Aggiungi piatto</a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -89,7 +83,10 @@
         </nav>
 
         <main class="">
-            @yield('content')
+            <div class="container">
+                @yield('content')
+            </div>
+
         </main>
     </div>
 </body>

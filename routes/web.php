@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('foods', FoodController::class)->parameters([
             'foods' => 'food:slug'
         ]);
+        Route::delete('foods/{slug}/deleteImage', [FoodController::class, 'deleteImage'])->name('foods.deleteImage');
     });
 
 Route::middleware('auth')->group(function () {

@@ -38,7 +38,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label">Descrizione</label>
+            <label for="description" class="form-label">Descrizione:</label>
             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description') }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
@@ -48,7 +48,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label">Price:</label>
+            <label for="price" class="form-label">Prezzo:</label>
             <input type="number" min="0" step="0.01" class="form-control @error('price') is-invalid @enderror"
                 id="price" name="price" value="{{ old('price') }}">
             @error('price')
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="visibility" name="visibility" value="visible" @if (old('visibility'))
+            <input class="form-check-input" type="checkbox" role="switch" id="visibility" name="visibility" value="1" @if (old('visibility'))
                 checked
             @endif >
             <label class="form-check-label" for="visibility">Visibile</label>
