@@ -38,13 +38,22 @@ class RestaurantController extends Controller
      */
     public function store($restaurant_info)
     {
+
+        $form_data = $restaurant_info;
+
        $newRestaurant = new Restaurant();
        $newRestaurant['slug'] = Restaurant::generateSlug($restaurant_info['name']);
        $newRestaurant->fill($restaurant_info);
 
        $newRestaurant->save();
+
+       if (array_key_exists('type', $form_data)) {
+
+        $newRestaurant->types()->attach($form_data['type']);
+        }
          return redirect(RouteServiceProvider::HOME);
     }
+
 
     /**
      * Display the specified resource.
