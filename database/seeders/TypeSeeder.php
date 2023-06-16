@@ -15,10 +15,49 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = ['Italiano', 'Cinese', 'Giapponese', 'Fast Food', 'Pizzeria', 'Argentino', 'Kebab', 'Indiano', 'Thailandese'];
+        $types = [
+            [
+                'name' => 'Italiano',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Cinese',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Giapponese',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Fast-Food',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Pizzeria',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Argentino',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Kebab',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Indiano',
+                'image' => 'img/link'
+            ],
+            [
+                'name' => 'Thailandese',
+                'image' => 'img/link'
+            ]
+        ];
+
         foreach ($types as $type) {
             $newType = new Type();
-            $newType->name = $type;
+            $newType->name = $type['name'];
+            $newType->image = $type['image'];
             $newType->save();
         }
     }
