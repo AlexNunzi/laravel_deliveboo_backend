@@ -20,6 +20,8 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <a class="btn btn-primary m-5" href="{{route('admin.foods.index')}}">Cibi</a>
+            <a class="btn btn-warning" href="{{route('admin.foods.create')}}">Aggiungi piatto</a>
         </div>
     </div>
 </div>

@@ -26,11 +26,10 @@ class UpdateFoodRequest extends FormRequest
     {
         return [
             'restaurant_id' => 'nullable|exists:restaurants,id',
-            'name' => 'required|max:150|unique:food',
-            'price' => 'required|decimal:2',
-            'description' => 'nullable|max:',
-            'image' => 'nullable|',
-            'visibility' => 'required',
+            'name' => 'required|max:150',
+            'price' => 'required|decimal:0,2|max:99.99',
+            'description' => 'nullable|string|max:2000',
+            'image' => 'nullable|image|max:1024',
         ];
     }
 }
