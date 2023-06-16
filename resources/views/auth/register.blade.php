@@ -137,6 +137,19 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="mb-4 row">
+                                @foreach ($types as $type)
+                                    <input id="type_{{ $type->id }}" @if (in_array($type->id, old('type', []))) checked @endif
+                                        type="checkbox" name="type[]" value="{{ $type->id }}">
+                                    <label for="type_{{ $type->id }}" class="form-label">{{ $type->name }}</label>
+                                    <br>
+                                @endforeach
+                                @error('type')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
 
                             <div class="mb-4 row mb-0">

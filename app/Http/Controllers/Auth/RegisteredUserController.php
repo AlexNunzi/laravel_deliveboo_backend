@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\RestaurantController;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Type;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -21,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $types = Type::all();
+        return view('auth.register', compact('types'));
     }
 
     /**
@@ -40,6 +42,7 @@ class RegisteredUserController extends Controller
             'p_iva' => ['required', 'string', 'max:12'],
             'image' => ['nullable','string', 'max:150'],
             'decription' => ['nullable','string', 'max:2000'],
+            'type' => ['nullable', 'exists:types,id'],
         ]);
 
         $user = User::create([
@@ -60,6 +63,7 @@ class RegisteredUserController extends Controller
         'p_iva' =>$request->p_iva,
         'image' =>'url',
         'description' =>$request->description,
+        'type' => $request->type
 
        ]);
        return redirect(RouteServiceProvider::HOME);
