@@ -60,9 +60,10 @@ class FoodController extends Controller
         $form_data['restaurant_id'] = $user->restaurant->id;
 
         $form_data['slug'] = Food::generateSlug($request->name);
+
         if ($request->hasFile('image')) {
             $img_path = Storage::put('image', $request->image);
-            $form_info['image'] = $img_path;
+            $form_data['image'] = $img_path;
         }
 
         $newFood = Food::create($form_data);
