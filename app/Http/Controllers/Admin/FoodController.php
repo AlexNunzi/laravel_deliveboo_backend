@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreFoodRequest;
+use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
+use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
@@ -14,7 +20,11 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(Auth::user()->id);
+
+        $foods = Food::where('restaurant_id', $user->restaurant->id)->get();
+
+        return view('admin.foods.index', compact('foods'));
     }
 
     /**
@@ -24,7 +34,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.foods.create');
     }
 
     /**
@@ -33,9 +43,30 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFoodRequest $request)
     {
-        //
+
+        $form_data = $request->validated();
+
+        if ($request->has('visibility')) {
+            $form_data['visibility'] = true;
+        } else {
+            $form_data['visibility'] = false;
+        }
+
+        $user = User::find(Auth::user()->id);
+
+        $form_data['restaurant_id'] = $user->restaurant->id;
+
+        $form_data['slug'] = Food::generateSlug($request->name);
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('image', $request->image);
+            $form_info['image'] = $img_path;
+        }
+
+        $newFood = Food::create($form_data);
+
+        return redirect()->route('admin.foods.show', ['food' => $newFood->slug]);
     }
 
     /**
@@ -46,7 +77,7 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
+        return view('admin.foods.show', compact('food'));
     }
 
     /**
@@ -57,7 +88,7 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        //
+        return view('admin.foods.edit', compact('food'));
     }
 
     /**
@@ -67,9 +98,27 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food)
+    public function update(UpdateFoodRequest $request, Food $food)
     {
-        //
+        $validated_data = $request->validated();
+        $validated_data['slug'] = Food::generateSlug($request->name);
+
+        $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', '$food->id')->first();
+
+        if ($checkFood) {
+            return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
+        }
+
+        //DA GUARDARE MEGLIO LA GESTIONE DELL'IMMAGINE!
+
+        // if ($request->image) {
+        //     Storage::delete($food->image);
+        //     $image = Storage::disk('public')->put('image_restaurants', $request->image);
+        //     $validatedData['image'] = $image;
+        // }
+
+        $food->update($validated_data);
+        return redirect()->route('admin.foods.show', ['food' => $food->slug]);
     }
 
     /**
@@ -80,6 +129,7 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        //
+        $food->delete();
+        return redirect()->route('admin.foods.index');
     }
 }
