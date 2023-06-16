@@ -110,13 +110,17 @@ class FoodController extends Controller
             return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
         }
 
-        //DA GUARDARE MEGLIO LA GESTIONE DELL'IMMAGINE!
 
-        // if ($request->image) {
-        //     Storage::delete($food->image);
-        //     $image = Storage::disk('public')->put('image_restaurants', $request->image);
-        //     $validatedData['image'] = $image;
-        // }
+        if ($request->hasFile('image')) {
+
+            if ($food->image) {
+                Storage::delete($food->image);
+            }
+
+            $img_path = Storage::put('image', $request->image);
+            $validated_data['image'] = $img_path;
+        }
+        dd($request);
 
         $food->update($validated_data);
         return redirect()->route('admin.foods.show', ['food' => $food->slug]);
