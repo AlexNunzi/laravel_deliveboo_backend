@@ -137,6 +137,15 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Descrizione:</label>
+                                <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{old('description')}}</textarea>
+                                @error('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                            </div>
                             <span class="pb-3 d-inline-block">Tipologia:</span>
                             <div class="mb-3 d-flex flex-wrap">
                                 @foreach ($types as $type)
