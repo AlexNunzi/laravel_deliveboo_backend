@@ -61,6 +61,11 @@ class FoodController extends Controller
 
         $form_data['slug'] = Food::generateSlug($request->name);
 
+        $checkPost = Food::where('slug', $form_data['slug'])->first();
+        if ($checkPost) {
+            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo progetto, cambia il titolo']);
+        }
+
         if ($request->hasFile('image')) {
             $img_path = Storage::put('image', $request->image);
             $form_data['image'] = $img_path;
@@ -103,13 +108,20 @@ class FoodController extends Controller
     public function update(UpdateFoodRequest $request, Food $food)
     {
         $validated_data = $request->validated();
+
+        if ($request->has('visibility')) {
+            $validated_data['visibility'] = true;
+        } else {
+            $validated_data['visibility'] = false;
+        }
         $validated_data['slug'] = Food::generateSlug($request->name);
 
-        $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', '$food->id')->first();
+        $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', $food->id)->first();
 
         if ($checkFood) {
             return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
         }
+        
 
 
         if ($request->hasFile('image')) {
@@ -121,7 +133,6 @@ class FoodController extends Controller
             $img_path = Storage::put('image', $request->image);
             $validated_data['image'] = $img_path;
         }
-        dd($request);
 
         $food->update($validated_data);
         return redirect()->route('admin.foods.show', ['food' => $food->slug]);
@@ -135,7 +146,23 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
+        if ($food->image) {
+            Storage::delete($food->image);
+        }
         $food->delete();
         return redirect()->route('admin.foods.index');
+    }
+    public function deleteImage($slug) {
+
+        $food = Food::where('slug', $slug)->firstOrFail();
+
+        if ($food->image) {
+            Storage::delete($food->image);
+            $food->image = null;
+            $food->save();
+        }
+
+        return redirect()->route('admin.foods.edit', $food->slug);
+
     }
 }

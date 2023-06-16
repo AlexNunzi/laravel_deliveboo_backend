@@ -16,7 +16,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-4 row">
@@ -71,7 +71,7 @@
 
                             <div class="mb-4 row">
                                 <label for="p_iva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Paratita IVA') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
@@ -137,12 +137,23 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-4 row">
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Descrizione:</label>
+                                <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{old('description')}}</textarea>
+                                @error('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <span class="pb-3 d-inline-block">Tipologia:</span>
+                            <div class="mb-3 d-flex flex-wrap">
                                 @foreach ($types as $type)
+                                <div class="pe-3">
                                     <input id="type_{{ $type->id }}" @if (in_array($type->id, old('type', []))) checked @endif
                                         type="checkbox" name="type[]" value="{{ $type->id }}">
-                                    <label for="type_{{ $type->id }}" class="form-label">{{ $type->name }}</label>
-                                    <br>
+                                    <label for="type_{{ $type->id }}" >{{ $type->name }}</label>
+                                </div>
                                 @endforeach
                                 @error('type')
                                     <div class="invalid-feedback">
