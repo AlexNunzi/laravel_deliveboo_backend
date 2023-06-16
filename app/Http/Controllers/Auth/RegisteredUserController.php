@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'address' => ['required', 'string', 'max:100'],
             'p_iva' => ['required', 'string', 'max:12'],
-            'image' => ['nullable', 'string', 'max:150'],
+            'image' => ['nullable', 'image', 'max:1024'],
             'decription' => ['nullable', 'string', 'max:2000'],
             'type' => ['nullable', 'exists:types,id'],
         ]);
@@ -62,7 +62,7 @@ class RegisteredUserController extends Controller
             'name' => $request->restaurant_name,
             'address' => $request->address,
             'p_iva' => $request->p_iva,
-            'image' => 'url',
+            'image' => $request->image,
             'description' => $request->description,
             'type' => $request->type
 
