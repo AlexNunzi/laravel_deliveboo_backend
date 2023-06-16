@@ -47,7 +47,7 @@ class RestaurantController extends Controller
 
        $newRestaurant->fill($restaurant_info);
 
-       if (array_key_exists('image', $form_data)) {
+       if (array_key_exists('image', $form_data) && $form_data['image'] != NULL) {
         $img_path = Storage::put('image', $form_data['image']);
         $newRestaurant['image'] = $img_path;
     }
