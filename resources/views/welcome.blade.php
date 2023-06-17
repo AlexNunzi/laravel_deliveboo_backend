@@ -11,18 +11,11 @@
                 </svg>
             </div>
             <h1 class="display-5 fw-bold">
-                Gruppo 5 wow
+                Gruppo 5
             </h1>
 
-            <p class="col-md-8 fs-4">mi sono rotta</p>
-            <a href="https://packagist.org/packages/pacificdev/laravel_9_preset" class="btn btn-primary btn-lg"
-                type="button">Pull request</a>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="container">
-            <p>bello!</p>
+            <p class="col-md-8 fs-4">Gruppo 5</p>
+            <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Lista piatti</a>
         </div>
     </div>
 @endsection
