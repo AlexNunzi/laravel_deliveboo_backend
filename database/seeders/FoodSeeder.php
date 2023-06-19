@@ -21,6 +21,12 @@ class FoodSeeder extends Seeder
         $userMario = User::where('name', 'Mario Rossi')->first();
         $userLuca = User::where('name', 'Luca Bianchi')->first();
         $userPaola = User::where('name', 'Paola Verdi')->first();
+        $userBan = User::where('name', 'Ban Zhao')->first();
+        $userHaruna = User::where('name', 'Haruna Esposito')->first();
+        $userPablo = User::where('name', 'Pablo Costa')->first();
+        $userMukki = User::where('name', 'Mukki Kumar')->first();
+        $userRaj = User::where('name', 'Raj Gandhi')->first();
+        $userChao = User::where('name', 'Chao de Santis')->first();
 
         $foods = [
             [
@@ -92,7 +98,141 @@ class FoodSeeder extends Seeder
                 'price' => 7.00,
                 'description' => 'Spaghetti alla carbonara deliziosi e cremosi con guanciale, pecorino, uova di prima scelta e una spolverata di pepe nero, non potrai dimenticarli, parola di Paolo, nostro cliente affezionato.',
                 'image' => 'IIyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkII.jpg',
-            ]
+            ],
+
+            //risto cinese
+            [
+                'name' => 'Ravioli al vapore',
+                'restaurant_id' => $userBan->restaurant->id,
+                'price' => 4.00,
+                'description' => 'Ravioli con ripeno speciale seguendo la segretissima ricetta della nonna Mao,non resterai deluso/a',
+                'image' => 'ravioli-con-gamberi-al-vapore.jpg',
+            ],
+            [
+                'name' => 'Spaghetti di soia con gamberi ',
+                'restaurant_id' => $userBan->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Spaghetti di soia con gamberi freschissimi con verdure saltate',
+                'image' => 'spaghetti-con-gamberi.jpg',
+            ],
+            [
+                'name' => 'Anatra alla piastra',
+                'restaurant_id' => $userBan->restaurant->id,
+                'price' => 7.00,
+                'description' => 'Anatra freschissima del giardino di nonno Giuseppe, da provare almeno una volta nella vita',
+                'image' => 'anatra-alla-piastra.jpg',
+            ],
+            //risto giapponese
+            [
+                'name' => 'Hosomaki fritto ',
+                'restaurant_id' => $userHaruna->restaurant->id,
+                'price' => 7.00,
+                'description' => 'Sake hosomaki fritto, philadelphia e salsa teriyaki',
+                'image' => 'Hosomaki-fritto.jpg',
+            ],
+            [
+                'name' => 'Futomaki classico',
+                'restaurant_id' => $userHaruna->restaurant->id,
+                'price' => 6.00,
+                'description' => 'philadelphia, avocado, salmone, cipolla fritta e salsa teriyaki',
+                'image' => 'futomaki.jpg',
+            ],
+            [
+                'name' => 'Sashimi misto ',
+                'restaurant_id' => $userHaruna->restaurant->id,
+                'price' => 12.00,
+                'description' => 'Sashimi di salmone,tonno e branzino abbattuto secondo direttive nazionali',
+                'image' => 'sashimi.jpg',
+            ],
+            //risto argentino
+            [
+                'name' => 'Empanadas di carne',
+                'restaurant_id' => $userPablo->restaurant->id,
+                'price' => 8.00,
+                'description' => 'Panzerotto artigianale argentino ripieno di carne black angus e spezie tipiche',
+                'image' => 'empanada.jpg',
+            ],
+            [
+                'name' => 'Picanha',
+                'restaurant_id' => $userPablo->restaurant->id,
+                'price' => 17.00,
+                'description' => 'Il taglio di carne più amato dai latino americani, 300g di scamone argentino alla griglia ',
+                'image' => 'picanha.jpg',
+            ],
+            [
+                'name' => 'Tamal',
+                'restaurant_id' => $userPablo->restaurant->id,
+                'price' => 17.00,
+                'description' => 'Impasto a base di mais ripieno di maiale, olive,uova e spezie',
+                'image' => 'tamal.jpg',
+            ],
+            //kebab
+            [
+                'name' => 'Piadina kebab',
+                'restaurant_id' => $userMukki->restaurant->id,
+                'price' => 4.00,
+                'description' => 'piadina con kebab, cipolla,peperoni e patatine fritte',
+                'image' => 'piadina-kebab.jpeg',
+            ],
+            [
+                'name' => 'Allu Palak',
+                'restaurant_id' => $userMukki->restaurant->id,
+                'price' => 6.00,
+                'description' => 'Patate con spinaci',
+                'image' => 'allu-palak.jpg',
+            ],
+            [
+                'name' => 'Pollo al curry ',
+                'restaurant_id' => $userMukki->restaurant->id,
+                'price' => 8.00,
+                'description' => 'Morbidissimi bocconcini di pollo piccante al curry',
+                'image' => 'pollo-al-curry.jpg',
+            ],
+            //risto indiano/kebab
+            [
+                'name' => 'Focaccia  al formaggio',
+                'restaurant_id' => $userRaj->restaurant->id,
+                'price' => 4.50,
+                'description' => 'Tipica focaccia indina ripiena di formaggio fuso cotta nel forno di terracotta',
+                'image' => 'focaccia.jpg',
+            ],
+            [
+                'name' => 'Riso al cocco',
+                'restaurant_id' => $userRaj->restaurant->id,
+                'price' => 6.50,
+                'description' => 'Riso aromatizzato con cocco fresco ,spezie e arachidi',
+                'image' => 'riso-al-cocco.jpg',
+            ],
+            [
+                'name' => 'Pollo al burro',
+                'restaurant_id' => $userRaj->restaurant->id,
+                'price' => 11.50,
+                'description' => 'Pollo disossato servito in salsa di anacardi, burro,pomodoro e miele',
+                'image' => 'pollo-al-burro.jpg',
+            ],
+            //risto thailandese
+            [
+                'name' => 'Pollo con anacardi',
+                'restaurant_id' => $userChao->restaurant->id,
+                'price' => 12.50,
+                'description' => 'Pollo fritto con anacardi in salsa aromatizzata con cipolla, sedano e peperoni.',
+                'image' => 'pollo-con-anacardi.jpg',
+            ],
+            [
+                'name' => 'Riso all\'ananas',
+                'restaurant_id' => $userChao->restaurant->id,
+                'price' => 14.50,
+                'description' => 'Riso fritto all\'ananas con cipollotti,carote,uova e anacardi',
+                'image' => 'riso-ananas.jpg',
+            ],
+            [
+                'name' => 'Insalata di papaya',
+                'restaurant_id' => $userChao->restaurant->id,
+                'price' => 13.00,
+                'description' => 'Insalata di papaya verde con peperoncino,limone e zucchero, con possibile aggiunta di salsa di pesce solo nei giorni pari di plenilunio',
+                'image' => 'insalata-papaya.jpg',
+            ],
+
         ];
 
         // Controllo se la cartella image nello storage è presente
