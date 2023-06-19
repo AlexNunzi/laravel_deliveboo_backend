@@ -84,7 +84,11 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return view('admin.foods.show', compact('food'));
+        if($food->restaurant_id == Auth::user()->restaurant->id){
+            return view('admin.foods.show', compact('food'));
+        }else{
+            return view('admin.error');
+        }
     }
 
     /**
@@ -95,7 +99,11 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        return view('admin.foods.edit', compact('food'));
+        if($food->restaurant_id == Auth::user()->restaurant->id){
+            return view('admin.foods.edit', compact('food'));
+        }else{
+            return view('admin.error');
+        }
     }
 
     /**
@@ -107,35 +115,40 @@ class FoodController extends Controller
      */
     public function update(UpdateFoodRequest $request, Food $food)
     {
-        $validated_data = $request->validated();
+        if($food->restaurant_id == Auth::user()->restaurant->id){
 
-        if ($request->has('visibility')) {
-            $validated_data['visibility'] = true;
-        } else {
-            $validated_data['visibility'] = false;
-        }
-        $validated_data['slug'] = Food::generateSlug($request->name);
-
-        $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', $food->id)->first();
-
-        if ($checkFood) {
-            return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
-        }
-        
-
-
-        if ($request->hasFile('image')) {
-
-            if ($food->image) {
-                Storage::delete($food->image);
+            $validated_data = $request->validated();
+    
+            if ($request->has('visibility')) {
+                $validated_data['visibility'] = true;
+            } else {
+                $validated_data['visibility'] = false;
             }
-
-            $img_path = Storage::put('image', $request->image);
-            $validated_data['image'] = $img_path;
+            $validated_data['slug'] = Food::generateSlug($request->name);
+    
+            $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', $food->id)->first();
+    
+            if ($checkFood) {
+                return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
+            }
+            
+    
+    
+            if ($request->hasFile('image')) {
+    
+                if ($food->image) {
+                    Storage::delete($food->image);
+                }
+    
+                $img_path = Storage::put('image', $request->image);
+                $validated_data['image'] = $img_path;
+            }
+    
+            $food->update($validated_data);
+            return redirect()->route('admin.foods.show', ['food' => $food->slug]);
+        }else{
+            return view('admin.error');
         }
-
-        $food->update($validated_data);
-        return redirect()->route('admin.foods.show', ['food' => $food->slug]);
     }
 
     /**
