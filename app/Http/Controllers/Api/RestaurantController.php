@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
-    public function index($typeId)
+    public function index(Request $request)
     {
-        $restaurants = Restaurant::whereHas('types', function ($query) use ($typeId) {
-            $query->where('types.id', $typeId);
+        // dd($request->input('type_id'));
+
+        $param_ids = $request->input('type_id');
+
+        $restaurants = Restaurant::whereHas('types', function ($query) use ($param_ids) {
+            $query->whereIn('types.id', $param_ids);
         })->get();
 
         return response()->json([
