@@ -23,6 +23,12 @@ class RestaurantSeeder extends Seeder
         $userMario = User::where('name', 'Mario Rossi')->first();
         $userLuca = User::where('name', 'Luca Bianchi')->first();
         $userPaola = User::where('name', 'Paola Verdi')->first();
+        $userBan = User::where('name', 'Ban Zhao')->first();
+        $userHaruna = User::where('name', 'Haruna Esposito')->first();
+        $userPablo = User::where('name', 'Pablo Costa')->first();
+        $userMukki = User::where('name', 'Mukki Kumar')->first();
+        $userRaj = User::where('name', 'Raj Gandhi')->first();
+        $userChao = User::where('name', 'Chao de Santis')->first();
 
         $restaurants = [
             [
@@ -51,6 +57,60 @@ class RestaurantSeeder extends Seeder
                 'p_iva' => '71093710693',
                 'description' => 'Stai cercando hamburger o fritti a domicilio? Con McBoo non hai più bisogno di cercare. Dai un\'occhiata al nostro menù su DeliveBoo e scegli le prelibatezze che preferisci!',
                 'type' => ['Fast-Food']
+            ],
+            [
+                'name' => 'Sapori d\'Oriente',
+                'user_id' => $userBan->id,
+                'address' => 'Via Roma 12',
+                'image' => 'cucina-cinese.jpg',
+                'p_iva' => '26385092734',
+                'description' => 'Vuoi ordinare comodamente da casa tua dell\'ottimo cibo cinese? Allora sei nel posto giusto, da noi avrai il meglio ad un prezzo vantaggioso!',
+                'type' => ['Cinese']
+            ],
+            [
+                'name' => 'Sensei sushi',
+                'user_id' => $userHaruna->id,
+                'address' => 'Via dei Mille 36',
+                'image' => 'cucina-giappo.jpeg',
+                'p_iva' => '84726599234',
+                'description' => 'Voglia di sushi? Non temere visita il nostro menù, scegli il tuo piatto preferito e noi te lo portiamo a casa',
+                'type' => ['Giapponese']
+            ],
+            [
+                'name' => 'El barrio',
+                'user_id' => $userPablo->id,
+                'address' => 'Via Vittorio Emanuele 152',
+                'image' => 'cucina-argentina.jpg',
+                'p_iva' => '63548873421',
+                'description' => 'Assaggia i nostri deliziosi piatti comodamente seduto sul divano, tu ordini noi te lo portiamo',
+                'type' => ['Argentino']
+            ],
+            [
+                'name' => 'Turkish kebab',
+                'user_id' => $userMukki->id,
+                'address' => 'Viale San Martino 111',
+                'image' => 'kebab.jpg',
+                'p_iva' => '09346502803',
+                'description' => 'Kebab di prima scelta e molto altro da Indian kebab!',
+                'type' => ['Kebab']
+            ],
+            [
+                'name' => 'Indian restaurant',
+                'user_id' => $userRaj->id,
+                'address' => 'Via ghibellina 70/b',
+                'image' => 'cucina-indiana.jpg',
+                'p_iva' => '36488779245',
+                'description' => 'Kebab di prima scelta e molto altro da Indian kebab!',
+                'type' => ['Indiano', 'Kebab']
+            ],
+            [
+                'name' => 'Thai lounge',
+                'user_id' => $userChao->id,
+                'address' => 'Via D. Alighieri 33',
+                'image' => 'cucina-thai.jpg',
+                'p_iva' => '46588334241',
+                'description' => 'Il Thai lounge porta l\'oriente in casa tua con le sue specialità, lasciati sorprendere e ordina thai',
+                'type' => ['Thailandese', 'Argentino']
             ],
         ];
 
