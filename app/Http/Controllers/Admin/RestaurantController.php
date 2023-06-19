@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class RestaurantController extends Controller
@@ -35,10 +37,31 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($restaurant_info)
     {
-        //
+
+        $form_data = $restaurant_info;
+
+       $newRestaurant = new Restaurant();
+       $newRestaurant['slug'] = Restaurant::generateSlug($restaurant_info['name']);
+
+       $newRestaurant->fill($restaurant_info);
+
+       if (array_key_exists('image', $form_data) && $form_data['image'] != NULL) {
+        $img_path = Storage::put('image', $form_data['image']);
+        $newRestaurant['image'] = $img_path;
     }
+       $newRestaurant->save();
+
+
+
+       if (array_key_exists('type', $form_data)) {
+
+        $newRestaurant->types()->attach($form_data['type']);
+        }
+         return redirect(RouteServiceProvider::HOME);
+    }
+
 
     /**
      * Display the specified resource.
@@ -59,6 +82,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+
         //
     }
 
