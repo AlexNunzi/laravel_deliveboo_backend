@@ -15,8 +15,10 @@
 
             @csrf
             @method('PUT')
+
+            <h6 class="mb-5 mt-3">I campi contrassegnati da (*) sono obbligatori</h6>
             <div class="mb-3">
-                <label for="name" class="form-label">Titolo:</label>
+                <label for="name" class="form-label">Titolo (*)</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                     value="{{ old('name', $food->name) }}">
                 @error('name')
@@ -27,26 +29,28 @@
             </div>
 
             <div class="mb-3">
-                <label for="cover_image" class="form-label">Seleziona immagine:</label>
-        
+                <label for="cover_image" class="form-label">Seleziona immagine</label>
+
                 @if ($food->image)
-                <div class="my-img-wrapper">
-                    <img class="img-thumbnail my-img-thumb" src="{{asset('storage/' . $food->image)}}" alt="{{$food->name}}"/>
-                    <div id="my-btn" class="my-img-delete btn btn-danger">X</div>
-                </div>
+                    <div class="my-img-wrapper">
+                        <img class="img-thumbnail my-img-thumb" src="{{ asset('storage/' . $food->image) }}"
+                            alt="{{ $food->name }}" />
+                        <div id="my-btn" class="my-img-delete btn btn-danger">X</div>
+                    </div>
                 @endif
-        
-                <input type="file" class="form-control @error('image') is-invalid @enderror " id="image" name="image">
-        
+
+                <input type="file" class="form-control @error('image') is-invalid @enderror " id="image"
+                    name="image">
+
                 @error('image')
                     <div class="invalid-feedback">
-                        {{$message}}
+                        {{ $message }}
                     </div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione:</label>
+                <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description', $food->description) }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
@@ -56,9 +60,10 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo:</label>
-                <input type="number" min="0" step="0.01" class="form-control @error('price') is-invalid @enderror"
-                    id="price" name="price" value="{{ old('price', $food->price) }}">
+                <label for="price" class="form-label">Prezzo (*)</label>
+                <input type="number" min="0" step="0.01"
+                    class="form-control @error('price') is-invalid @enderror" id="price" name="price"
+                    value="{{ old('price', $food->price) }}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -67,15 +72,14 @@
             </div>
 
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="visibility" name="visibility" value="1" @if (old('visibility', $food->visibility)  == '1')
-                    checked
-                @endif >
+                <input class="form-check-input" type="checkbox" role="switch" id="visibility" name="visibility"
+                    value="1" @if (old('visibility', $food->visibility) == '1') checked @endif>
                 <label class="form-check-label" for="visibility">Visibile</label>
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
         </form>
-        <form id="my-form" action="{{route('admin.foods.deleteImage', ['slug' => $food->slug])}}" method="POST">
+        <form id="my-form" action="{{ route('admin.foods.deleteImage', ['slug' => $food->slug]) }}" method="POST">
             @csrf
             @method('DELETE')
         </form>
