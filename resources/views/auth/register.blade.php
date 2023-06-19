@@ -19,9 +19,10 @@
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
+                            <h6 class="mb-5 mt-3">I campi contrassegnati da (*) sono obbligatori</h6>
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome Utente') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome Utente (*)') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -36,13 +37,13 @@
                                 </div>
                             </div>
                             <div class="mb-4 row">
-                                <label for="restaurant_name"
-                                    class="col-md-4 col-form-label text-md-right">Nome Ristorante</label>
+                                <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Nome Ristorante
+                                    (*)</label>
 
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text"
-                                        class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name"
-                                        value="{{ old('restaurant_name') }}" required >
+                                        class="form-control @error('restaurant_name') is-invalid @enderror"
+                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required>
 
                                     @error('restaurant_name')
                                         <span class="invalid-feedback" role="alert">
@@ -54,7 +55,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo (*)') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -71,7 +72,7 @@
 
                             <div class="mb-4 row">
                                 <label for="p_iva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA (*)') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
@@ -87,7 +88,7 @@
                             </div>
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email (*)') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -104,7 +105,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password (*)') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -121,7 +122,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password (*)') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -129,8 +130,9 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Immagine:</label>
-                                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                                <label for="image" class="form-label">Immagine</label>
+                                <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                    id="image" name="image">
                                 @error('image')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -138,22 +140,24 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label">Descrizione:</label>
-                                <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{old('description')}}</textarea>
+                                <label for="description" class="form-label">Descrizione</label>
+                                <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description"
+                                    name="description">{{ old('description') }}</textarea>
                                 @error('description')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            <span class="pb-3 d-inline-block">Tipologia:</span>
+                            <span class="pb-3 d-inline-block">Tipologia (*)</span>
                             <div class="mb-3 d-flex flex-wrap">
                                 @foreach ($types as $type)
-                                <div class="pe-3">
-                                    <input id="type_{{ $type->id }}" @if (in_array($type->id, old('type', []))) checked @endif
-                                        type="checkbox" name="type[]" value="{{ $type->id }}">
-                                    <label for="type_{{ $type->id }}" >{{ $type->name }}</label>
-                                </div>
+                                    <div class="pe-3">
+                                        <input id="type_{{ $type->id }}"
+                                            @if (in_array($type->id, old('type', []))) checked @endif type="checkbox"
+                                            name="type[]" value="{{ $type->id }}">
+                                        <label for="type_{{ $type->id }}">{{ $type->name }}</label>
+                                    </div>
                                 @endforeach
                                 @error('type')
                                     <div class="invalid-feedback">
