@@ -78,6 +78,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
+            <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
         </form>
         <form id="my-form" action="{{ route('admin.foods.deleteImage', ['slug' => $food->slug]) }}" method="POST">
             @csrf
