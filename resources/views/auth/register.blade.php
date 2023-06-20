@@ -27,7 +27,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus required>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                        value="{{ old('address') }}" autocomplete="address" required>
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" autofocus>
+                                        value="{{ old('p_iva') }}" required autocomplete="p_iva">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -127,6 +127,8 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
+                                    <span class="d-none text-danger password_equal_register fs-6">Le password inserite devo
+                                        essere uguali</span>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -150,10 +152,12 @@
                                 @enderror
                             </div>
                             <span class="pb-3 d-inline-block">Tipologia (*)</span>
+                            <span class="d-none text-danger types_required_register fs-6">Devi selezionare almeno una
+                                tipologia</span>
                             <div class="mb-3 d-flex flex-wrap">
                                 @foreach ($types as $type)
                                     <div class="pe-3">
-                                        <input id="type_{{ $type->id }}"
+                                        <input class="register_check" id="type_{{ $type->id }}"
                                             @if (in_array($type->id, old('type', []))) checked @endif type="checkbox"
                                             name="type[]" value="{{ $type->id }}">
                                         <label for="type_{{ $type->id }}">{{ $type->name }}</label>
@@ -169,7 +173,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="register_submit" type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
