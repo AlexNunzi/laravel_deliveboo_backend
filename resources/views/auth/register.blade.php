@@ -27,7 +27,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus required minlength="2" maxlength="255">
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text"
                                         class="form-control @error('restaurant_name') is-invalid @enderror"
-                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required>
+                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required minlength="2" maxlength="100">
 
                                     @error('restaurant_name')
                                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                        value="{{ old('address') }}" autocomplete="address" required minlength="2" maxlength="100">
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" autofocus>
+                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" minlength="2" maxlength="12">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email') }}" required autocomplete="email" maxlength="255">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                        required autocomplete="new-password" minlength="8" >
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -126,7 +126,9 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
+                                        name="password_confirmation" required autocomplete="new-password" minlength="8">
+                                    <span class="d-none text-danger password_equal_register fs-6">Le password inserite devo
+                                        essere uguali</span>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -142,7 +144,7 @@
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrizione</label>
                                 <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-                                    name="description">{{ old('description') }}</textarea>
+                                    name="description" maxlength="1000">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -150,10 +152,12 @@
                                 @enderror
                             </div>
                             <span class="pb-3 d-inline-block">Tipologia (*)</span>
+                            <span class="d-none text-danger types_required_register fs-6">Devi selezionare almeno una
+                                tipologia</span>
                             <div class="mb-3 d-flex flex-wrap">
                                 @foreach ($types as $type)
                                     <div class="pe-3">
-                                        <input id="type_{{ $type->id }}"
+                                        <input class="register_check" id="type_{{ $type->id }}"
                                             @if (in_array($type->id, old('type', []))) checked @endif type="checkbox"
                                             name="type[]" value="{{ $type->id }}">
                                         <label for="type_{{ $type->id }}">{{ $type->name }}</label>
@@ -169,7 +173,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="register_submit" type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -180,4 +184,39 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const checkboxes = document.getElementsByClassName('register_check');
+        const register_submit = document.getElementById('register_submit');
+        const types_required_register = document.querySelector('.types_required_register');
+        const register_password = document.getElementById('password');
+        const register_password_confirm = document.getElementById('password-confirm');
+        const password_equal_register = document.querySelector('.password_equal_register');
+        register_submit.addEventListener('click', checkIfChecked);
+        register_password_confirm.addEventListener('focusout', checkPassword);
+        function checkIfChecked() {
+            let validationCheck = false
+            for(let i=0; i<checkboxes.length; i++ ) {
+                if(checkboxes[i].checked ==true) {
+                    validationCheck = true
+                }
+            
+            }
+            console.log('validationCheck=' + validationCheck);
+            if(validationCheck == false) {
+                types_required_register.classList.remove('d-none');
+                register_submit.preventDefault
+            } else {
+                types_required_register.classList.add('d-none');
+            }
+        }
+        function checkPassword() {
+            if(register_password.value != register_password_confirm.value) {
+                password_equal_register.classList.remove('d-none');
+            } else {
+                password_equal_register.classList.add('d-none');
+            }
+        }
+    </script>
+    
 @endsection

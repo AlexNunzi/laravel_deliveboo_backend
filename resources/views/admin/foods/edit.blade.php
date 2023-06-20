@@ -20,7 +20,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Titolo (*)</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                    value="{{ old('name', $food->name) }}">
+                    value="{{ old('name', $food->name) }}" required minlength="5" maxlength="100">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -35,7 +35,7 @@
                     <div class="my-img-wrapper">
                         <img class="img-thumbnail my-img-thumb" src="{{ asset('storage/' . $food->image) }}"
                             alt="{{ $food->name }}" />
-                        <div id="my-btn" class="my-img-delete btn btn-danger">X</div>
+                        <div id="my-btn" class="my-img-delete btn btn-danger" onclick="prova()">X</div>
                     </div>
                 @endif
 
@@ -51,7 +51,7 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description', $food->description) }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" maxlength="1000">{{ old('description', $food->description) }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -61,9 +61,9 @@
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo (*)</label>
-                <input type="number" min="0" step="0.01"
+                <input type="number" min="0" max="99.99" step="0.01"
                     class="form-control @error('price') is-invalid @enderror" id="price" name="price"
-                    value="{{ old('price', $food->price) }}">
+                    value="{{ old('price', $food->price) }}" required>
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -86,4 +86,13 @@
         </form>
 
     </div>
+
+    <script>
+        function prova(){
+            const btnDelete = document.getElementById('my-btn');
+            const formDelete = document.getElementById('my-form');
+            formDelete.submit();
+            console.log('fatto')
+        }
+    </script>
 @endsection
