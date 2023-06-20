@@ -32,6 +32,17 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return[
+            'email.required' => "L'email è obbligatoria",
+            'email.string' => "L'email deve essere una stringa",
+            'email.email' => "L'email deve avere un formato coerente (es. info@deliveboo.com",
+            'password.required' => "La password è obbligatoria",
+            'password.string' => "La password deve essere una stringa",
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
