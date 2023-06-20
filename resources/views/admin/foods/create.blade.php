@@ -68,6 +68,8 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
+            <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
+
         </form>
     </div>
 
