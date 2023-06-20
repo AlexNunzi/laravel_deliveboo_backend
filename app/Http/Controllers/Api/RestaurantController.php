@@ -12,7 +12,6 @@ class RestaurantController extends Controller
 {
     public function index(Request $request)
     {
-        // dd($request->input('type_id'));
 
         $param_ids = $request->input('type_id');
 
