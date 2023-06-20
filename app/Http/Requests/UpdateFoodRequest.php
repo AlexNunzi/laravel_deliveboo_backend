@@ -32,4 +32,20 @@ class UpdateFoodRequest extends FormRequest
             'image' => 'nullable|image|max:1024',
         ];
     }
+
+    public function messages()
+    {
+        return[
+            'restaurant_id.exists' => "L'id del ristorante deve esistere",
+            'name.required' => 'Il nome è obbligatorio',
+            'name.max' => 'Il nome deve avere al massimo :max caratteri',
+            'price.required' => 'Il prezzo è obbligatorio',
+            'price.decimal' => 'Il prezzo deve avere al massimo due cifre decimali',
+            'price.max' => 'Il prezzo può essere al massimo di :max €',
+            'description.string' => "La descrizione deve essere una stringa",
+            'description.max' => "La descrizione deve avere al massimo :max caratteri",
+            'image.image' => "L'immagine deve essere un file di tipo immagine",
+            'image.max' => "L'immagine deve pesare al massimo :max KB",
+        ];
+    }
 }
