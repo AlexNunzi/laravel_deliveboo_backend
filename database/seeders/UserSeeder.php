@@ -63,6 +63,31 @@ class UserSeeder extends Seeder
                 'email' => 'chao.desantis@hotmail.it',
                 'password' => 'ciaociao'
             ],
+            [
+                'name' => 'Marcello Lippi',
+                'email' => 'marcello.lippi@hotmail.it',
+                'password' => 'ciaociao'
+            ],
+            [
+                'name' => 'Luigi Vitale',
+                'email' => 'luigi.vitale@hotmail.it',
+                'password' => 'ciaociao'
+            ],
+            [
+                'name' => 'Bruce Lee',
+                'email' => 'bruce.lee@hotmail.it',
+                'password' => 'ciaociao'
+            ],
+            [
+                'name' => 'Franca Franchi',
+                'email' => 'franca.franchi@hotmail.it',
+                'password' => 'ciaociao'
+            ],
+            [
+                'name' => 'Francesco Capuozzo',
+                'email' => 'francesco.capuozzo@hotmail.it',
+                'password' => 'ciaociao'
+            ],
         ];
 
         // \App\Models\User::factory()->create([

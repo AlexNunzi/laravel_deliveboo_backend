@@ -34,13 +34,29 @@ class FoodSeeder extends Seeder
         $userFrancesco = User::where('name', 'Francesco Capuozzo')->first();
 
         $foods = [
+            //risto italiano
             [
-                'name' => 'Bacon burger',
-                'restaurant_id' => $userPaola->restaurant->id,
-                'price' => 7.50,
-                'description' => 'Panino con hamburger di manzo 150g, bacon, formaggio, insalata, pomodoro e salse.',
-                'image' => 'E6yeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkvS.jpg',
+                'name' => 'Spaghetti all\'Amatriciana',
+                'restaurant_id' => $userMario->restaurant->id,
+                'price' => 7.00,
+                'description' => 'Deliziosi spaghetti all\'Amatriciana realizzati con ingredienti di prima scelta per ottenere un sapore strepitoso',
+                'image' => 'GGyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkGG.jpg',
             ],
+            [
+                'name' => 'Spaghetti cacio e pepe',
+                'restaurant_id' => $userMario->restaurant->id,
+                'price' => 7.00,
+                'description' => 'Spaghetti avvolti dalla cremosità del formaggio arricchiti dal sapore deciso del pepe per un\'esplosione di gusto.',
+                'image' => 'HHyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkHH.jpg',
+            ],
+            [
+                'name' => 'Spaghetti alla carbonara',
+                'restaurant_id' => $userMario->restaurant->id,
+                'price' => 7.00,
+                'description' => 'Spaghetti alla carbonara deliziosi e cremosi con guanciale, pecorino, uova di prima scelta e una spolverata di pepe nero, non potrai dimenticarli, parola di Paolo, nostro cliente affezionato.',
+                'image' => 'IIyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkII.jpg',
+            ],
+            //italiano/pizzeria
             [
                 'name' => 'Lasagne al ragù',
                 'restaurant_id' => $userLuca->restaurant->id,
@@ -48,20 +64,6 @@ class FoodSeeder extends Seeder
                 'description' => 'Lasagne con ragù di carne dal gusto deciso.',
                 'image' => 'AAyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkAA.jpg',
                 'visibility' => false,
-            ],
-            [
-                'name' => 'Medaglioni di pollo impanati',
-                'restaurant_id' => $userPaola->restaurant->id,
-                'price' => 4.00,
-                'description' => 'Medaglioni di pollo con panatura croccante da cuore tenero.',
-                'image' => 'BByeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkBB.jpg',
-            ],
-            [
-                'name' => 'Patatine fritte',
-                'restaurant_id' => $userPaola->restaurant->id,
-                'price' => 3.00,
-                'description' => 'Patatine fritte croccantissime e deliziose.',
-                'image' => 'CCyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkCC.jpg',
             ],
             [
                 'name' => 'Pizza con tartare di dentice e pomodoro datterino',
@@ -85,27 +87,56 @@ class FoodSeeder extends Seeder
                 'image' => 'FFyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkFF.jpg',
             ],
             [
-                'name' => 'Spaghetti all\'Amatriciana',
-                'restaurant_id' => $userMario->restaurant->id,
-                'price' => 7.00,
-                'description' => 'Deliziosi spaghetti all\'Amatriciana realizzati con ingredienti di prima scelta per ottenere un sapore strepitoso',
-                'image' => 'GGyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkGG.jpg',
+                'name' => 'Tiramisù',
+                'restaurant_id' => $userLuca->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Tiramisù classico',
+                'image' => 'tiramisu.jpg',
             ],
             [
-                'name' => 'Spaghetti cacio e pepe',
-                'restaurant_id' => $userMario->restaurant->id,
-                'price' => 7.00,
-                'description' => 'Spaghetti avvolti dalla cremosità del formaggio arricchiti dal sapore deciso del pepe per un\'esplosione di gusto.',
-                'image' => 'HHyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkHH.jpg',
-            ],
-            [
-                'name' => 'Spaghetti alla carbonara',
-                'restaurant_id' => $userMario->restaurant->id,
-                'price' => 7.00,
-                'description' => 'Spaghetti alla carbonara deliziosi e cremosi con guanciale, pecorino, uova di prima scelta e una spolverata di pepe nero, non potrai dimenticarli, parola di Paolo, nostro cliente affezionato.',
-                'image' => 'IIyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkII.jpg',
+                'name' => 'Tartufo bianco',
+                'restaurant_id' => $userLuca->restaurant->id,
+                'price' => 5.00,
+                'description' => 'tartufo alla vaniglia con interno al cioccolato',
+                'image' => 'tartufo-bianco.jpg',
             ],
 
+            //fastfood
+            [
+                'name' => 'Bacon burger',
+                'restaurant_id' => $userPaola->restaurant->id,
+                'price' => 7.50,
+                'description' => 'Panino con hamburger di manzo 150g, bacon, formaggio, insalata, pomodoro e salse.',
+                'image' => 'E6yeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkvS.jpg',
+            ],
+            [
+                'name' => 'Medaglioni di pollo impanati',
+                'restaurant_id' => $userPaola->restaurant->id,
+                'price' => 4.00,
+                'description' => 'Medaglioni di pollo con panatura croccante da cuore tenero.',
+                'image' => 'BByeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkBB.jpg',
+            ],
+            [
+                'name' => 'Patatine fritte',
+                'restaurant_id' => $userPaola->restaurant->id,
+                'price' => 3.00,
+                'description' => 'Patatine fritte croccantissime e deliziose.',
+                'image' => 'CCyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkCC.jpg',
+            ],
+            [
+                'name' => 'cheesecake ai frutti di bosco',
+                'restaurant_id' => $userPaola->restaurant->id,
+                'price' => 3.50,
+                'description' => 'cheesecake ai frutti di bosco',
+                'image' => 'cheesecake-bosco.jpg',
+            ],
+            [
+                'name' => 'cheesecake al pistacchio',
+                'restaurant_id' => $userPaola->restaurant->id,
+                'price' => 4.00,
+                'description' => 'cheesecake al pistacchio di Bronte',
+                'image' => 'cheesecake-pistacchio.jpg',
+            ],
             //risto cinese
             [
                 'name' => 'Ravioli al vapore',
@@ -127,6 +158,27 @@ class FoodSeeder extends Seeder
                 'price' => 7.00,
                 'description' => 'Anatra freschissima del giardino di nonno Giuseppe, da provare almeno una volta nella vita',
                 'image' => 'anatra-alla-piastra.jpg',
+            ],
+            [
+                'name' => 'Mochi ai fagioli rossi',
+                'restaurant_id' => $userBan->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Delizioso dolce tipico a base di riso ripieno di confettura di fagioli rossi',
+                'image' => 'mochi.jpg',
+            ],
+            [
+                'name' => 'Mochi al sesamo',
+                'restaurant_id' => $userBan->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Delizioso dolce tipico a base di riso ripieno di crema di sesamo',
+                'image' => 'mochi-sesamo.jpg',
+            ],
+            [
+                'name' => 'Mochi al tè matcha',
+                'restaurant_id' => $userBan->restaurant->id,
+                'price' => 5.50,
+                'description' => 'Delizioso dolce tipico a base di riso ripieno di crema al tè matcha',
+                'image' => 'mochi-matcha.jpg',
             ],
             //risto giapponese
             [
@@ -150,6 +202,20 @@ class FoodSeeder extends Seeder
                 'description' => 'Sashimi di salmone,tonno e branzino abbattuto secondo direttive nazionali',
                 'image' => 'sashimi.jpg',
             ],
+            [
+                'name' => 'Dorayaki ',
+                'restaurant_id' => $userHaruna->restaurant->id,
+                'price' => 5.00,
+                'description' => 'dorayaki ai fagioli rossi',
+                'image' => 'dorayaki.jpg',
+            ],
+            [
+                'name' => 'Gelato alla vaniglia fritto ',
+                'restaurant_id' => $userHaruna->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Gelato al gusto vaniglia fritto',
+                'image' => 'gelato-vaniglia.jpg',
+            ],
             //risto argentino
             [
                 'name' => 'Empanadas di carne',
@@ -171,6 +237,27 @@ class FoodSeeder extends Seeder
                 'price' => 17.00,
                 'description' => 'Impasto a base di mais ripieno di maiale, olive,uova e spezie',
                 'image' => 'tamal.jpg',
+            ],
+            [
+                'name' => 'Gelato al cioccolato',
+                'restaurant_id' => $userPablo->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Gustoso gelato al cioccolato',
+                'image' => 'gelato-cioccolato.jpg',
+            ],
+            [
+                'name' => 'Mud cake',
+                'restaurant_id' => $userPablo->restaurant->id,
+                'price' => 6.00,
+                'description' => 'Torta al cioccolato fodente',
+                'image' => 'mudcake.jpg',
+            ],
+            [
+                'name' => 'Macedonia',
+                'restaurant_id' => $userPablo->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Macedonia di frutta fresca di stagione',
+                'image' => 'macedonia.jpg',
             ],
             //kebab
             [
@@ -194,6 +281,20 @@ class FoodSeeder extends Seeder
                 'description' => 'Morbidissimi bocconcini di pollo piccante al curry',
                 'image' => 'pollo-al-curry.jpg',
             ],
+            [
+                'name' => 'Coconut barfi',
+                'restaurant_id' => $userMukki->restaurant->id,
+                'price' => 3.00,
+                'description' => 'Dolce a base di cocco grattugiato, cardamomo e latte ',
+                'image' => 'barfi.jpg',
+            ],
+            [
+                'name' => 'Ras malai',
+                'restaurant_id' => $userMukki->restaurant->id,
+                'price' => 4.00,
+                'description' => 'Dolce con latte a base di formaggio Indiano con zafferano, cardamomo e pistacchio',
+                'image' => 'ras-malai.jpg',
+            ],
             //risto indiano/kebab
             [
                 'name' => 'Focaccia  al formaggio',
@@ -216,6 +317,20 @@ class FoodSeeder extends Seeder
                 'description' => 'Pollo disossato servito in salsa di anacardi, burro,pomodoro e miele',
                 'image' => 'pollo-al-burro.jpg',
             ],
+            [
+                'name' => 'Gulab jamun',
+                'restaurant_id' => $userRaj->restaurant->id,
+                'price' => 3.00,
+                'description' => 'Dolce con sciroppo a base di formaggio fresco e semolino',
+                'image' => 'gulab.jpg',
+            ],
+            [
+                'name' => 'Budino al mango',
+                'restaurant_id' => $userRaj->restaurant->id,
+                'price' => 4.00,
+                'description' => 'Fresco budino al gusto mango',
+                'image' => 'mango.jpg',
+            ],
             //risto thailandese
             [
                 'name' => 'Pollo con anacardi',
@@ -237,6 +352,20 @@ class FoodSeeder extends Seeder
                 'price' => 13.00,
                 'description' => 'Insalata di papaya verde con peperoncino,limone e zucchero, con possibile aggiunta di salsa di pesce solo nei giorni pari di plenilunio',
                 'image' => 'insalata-papaya.jpg',
+            ],
+            [
+                'name' => 'Profiteroles al cioccolato',
+                'restaurant_id' => $userChao->restaurant->id,
+                'price' => 5.00,
+                'description' => 'profiteroles al cioccolato con interno di panna fresca',
+                'image' => 'profiteroles.jpg',
+            ],
+            [
+                'name' => 'Tartufo nero',
+                'restaurant_id' => $userChao->restaurant->id,
+                'price' => 4.50,
+                'description' => 'Tartufo al cioccolato con interno gusto crema',
+                'image' => 'tartufo-nero.jpg',
             ],
             //ristorante italiano
             [
@@ -282,6 +411,27 @@ class FoodSeeder extends Seeder
                 'description' => 'Salsa,mozzarella di bufala,cozze,funghi',
                 'image' => 'pizza-blasfema.jpg',
             ],
+            [
+                'name' => 'Torta di mele della nonna',
+                'restaurant_id' => $userLuigi->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Torta classica con pezzetti di mele all\'interno',
+                'image' => 'torta-mele.jpg',
+            ],
+            [
+                'name' => 'Mini tartelletta',
+                'restaurant_id' => $userLuigi->restaurant->id,
+                'price' => 6.00,
+                'description' => 'Tartelletta ripiena di crema pasticcera con fragoline di bosco',
+                'image' => 'tartelletta.jpg',
+            ],
+            [
+                'name' => 'Crostata alla frutta',
+                'restaurant_id' => $userLuigi->restaurant->id,
+                'price' => 6.50,
+                'description' => 'Crostata con frutta fresca di stagione',
+                'image' => 'crostata.jpg',
+            ],
             //risto giappo/cinese
             [
                 'name' => 'Udon saltato con verdure',
@@ -311,6 +461,13 @@ class FoodSeeder extends Seeder
                 'description' => 'Spaghetti fatti a mano con verdure miste, uova e manzo',
                 'image' => 'ramen.jpg',
             ],
+            [
+                'name' => 'Nutella fritta',
+                'restaurant_id' => $userBruce->restaurant->id,
+                'price' => 4.00,
+                'description' => 'Nutella fritta',
+                'image' => 'nutella.jpg',
+            ],
             //risto kebab/indiano
             [
                 'name' => 'Kebab al piatto',
@@ -332,6 +489,20 @@ class FoodSeeder extends Seeder
                 'price' => 4.00,
                 'description' => 'Crepe di riso ripiena di patate aromatizzate',
                 'image' => 'masala.jpg',
+            ],
+            [
+                'name' => 'cheesecake alle fragole',
+                'restaurant_id' => $userFranca->restaurant->id,
+                'price' => 5.00,
+                'description' => 'Cheesecake alle fragole',
+                'image' => 'cheesecake-fragole.jpg',
+            ],
+            [
+                'name' => 'biscotti con gocce di cioccolato',
+                'restaurant_id' => $userFranca->restaurant->id,
+                'price' => 3.00,
+                'description' => 'Biscotti di pasta frolla con gocce di cioccolato fondente',
+                'image' => 'biscotti.jpg',
             ],
             //pizzeria/fast-food
             [
@@ -369,6 +540,28 @@ class FoodSeeder extends Seeder
                 'description' => 'Mozzarella,provola,gorgonzola,parmiggiano, miele e noci',
                 'image' => '4-formaggi.jpg',
             ],
+            [
+                'name' => 'Mousse alla ricotta',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 6.00,
+                'description' => 'Mousse alla ricotta aromatizzata all\'arancia con crumble alla cannella',
+                'image' => 'mousse-ricotta.jpg',
+            ],
+            [
+                'name' => 'Semifreddo al pistacchio',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 6.50,
+                'description' => 'Semifreddo al gusto pistacchio con crema di pistacchio e pistacchi interi',
+                'image' => 'semifreddo-pistacchio.jpg',
+            ],
+            [
+                'name' => 'Semifreddo al cocco',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 6.00,
+                'description' => 'Semifreddo al gusto cocco',
+                'image' => 'semifreddo-cocco.jpg',
+            ],
+
 
         ];
 
