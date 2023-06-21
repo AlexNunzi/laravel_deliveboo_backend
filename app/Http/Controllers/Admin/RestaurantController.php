@@ -42,24 +42,26 @@ class RestaurantController extends Controller
 
         $form_data = $restaurant_info;
 
-       $newRestaurant = new Restaurant();
-       $newRestaurant['slug'] = Restaurant::generateSlug($restaurant_info['name']);
+        $newRestaurant = new Restaurant();
+        $newRestaurant['slug'] = Restaurant::generateSlug($restaurant_info['name']);
 
-       $newRestaurant->fill($restaurant_info);
+        $newRestaurant->fill($restaurant_info);
 
-       if (array_key_exists('image', $form_data) && $form_data['image'] != NULL) {
-        $img_path = Storage::put('image', $form_data['image']);
-        $newRestaurant['image'] = $img_path;
-    }
-       $newRestaurant->save();
-
-
-
-       if (array_key_exists('type', $form_data)) {
-
-        $newRestaurant->types()->attach($form_data['type']);
+        if (array_key_exists('image', $form_data) && $form_data['image'] != NULL) {
+            $img_path = Storage::put('image', $form_data['image']);
+            $newRestaurant['image'] = $img_path;
         }
-         return redirect(RouteServiceProvider::HOME);
+        $newRestaurant->save();
+
+
+
+        if (array_key_exists('type', $form_data)) {
+
+            $form_data['type'] = array_unique($form_data['type']);
+
+            $newRestaurant->types()->attach($form_data['type']);
+        }
+        return redirect(RouteServiceProvider::HOME);
     }
 
 
