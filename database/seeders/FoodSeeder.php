@@ -27,6 +27,11 @@ class FoodSeeder extends Seeder
         $userMukki = User::where('name', 'Mukki Kumar')->first();
         $userRaj = User::where('name', 'Raj Gandhi')->first();
         $userChao = User::where('name', 'Chao de Santis')->first();
+        $userMarcello = User::where('name', 'Marcello Lippi')->first();
+        $userLuigi = User::where('name', 'Luigi Vitale')->first();
+        $userBruce = User::where('name', 'Bruce Lee')->first();
+        $userFranca = User::where('name', 'Franca Franchi')->first();
+        $userFrancesco = User::where('name', 'Francesco Capuozzo')->first();
 
         $foods = [
             [
@@ -42,6 +47,7 @@ class FoodSeeder extends Seeder
                 'price' => 8.00,
                 'description' => 'Lasagne con ragù di carne dal gusto deciso.',
                 'image' => 'AAyeFOcMYInGg1sF83GkpTkWxS3gUlo3oaSyNkAA.jpg',
+                'visibility' => false,
             ],
             [
                 'name' => 'Medaglioni di pollo impanati',
@@ -232,6 +238,137 @@ class FoodSeeder extends Seeder
                 'description' => 'Insalata di papaya verde con peperoncino,limone e zucchero, con possibile aggiunta di salsa di pesce solo nei giorni pari di plenilunio',
                 'image' => 'insalata-papaya.jpg',
             ],
+            //ristorante italiano
+            [
+                'name' => 'Italia 2006',
+                'restaurant_id' => $userMarcello->restaurant->id,
+                'price' => 12.00,
+                'description' => 'Pasta e patate con provola in cialda di formaggio',
+                'image' => 'pasta-patate.jpg',
+            ],
+            [
+                'name' => 'Salsiccia con friarielli',
+                'restaurant_id' => $userMarcello->restaurant->id,
+                'price' => 8.00,
+                'description' => 'Salsiccia alla brace con friarielli e patate fresche',
+                'image' => 'salsiccia-friarielli.jpg',
+            ],
+            [
+                'name' => 'Spada alla brace',
+                'restaurant_id' => $userMarcello->restaurant->id,
+                'price' => 15.00,
+                'description' => 'Pesce Spada alla Brace con insalata',
+                'image' => 'pesce-spada.jpg',
+            ],
+            //pizzeria
+            [
+                'name' => 'Alfredo\'s Pizza',
+                'restaurant_id' => $userLuigi->restaurant->id,
+                'price' => 15.00,
+                'description' => 'Salsa Alfredo, mozzarella,funghi,spinaci e prezzemolo fresco.La pizza italiana per eccellenza è la pizza Alfredo',
+                'image' => 'alfredo-pizza.jpg',
+            ],
+            [
+                'name' => 'Pizza Hawaiana',
+                'restaurant_id' => $userLuigi->restaurant->id,
+                'price' => 15.00,
+                'description' => 'Salsa,mozzarella,prosciutto cotto, ananas',
+                'image' => 'pizza-malvagia.jpg',
+            ],
+            [
+                'name' => 'Bella Napoli',
+                'restaurant_id' => $userLuigi->restaurant->id,
+                'price' => 15.00,
+                'description' => 'Salsa,mozzarella di bufala,cozze,funghi',
+                'image' => 'pizza-blasfema.jpg',
+            ],
+            //risto giappo/cinese
+            [
+                'name' => 'Udon saltato con verdure',
+                'restaurant_id' => $userBruce->restaurant->id,
+                'price' => 6.50,
+                'description' => 'uova, germogli di soia, carote, cavolo e cipolla',
+                'image' => 'udon.jpg',
+            ],
+            [
+                'name' => 'Chirashi salmone',
+                'restaurant_id' => $userBruce->restaurant->id,
+                'price' => 13.00,
+                'description' => 'Polpetta di riso con salmone',
+                'image' => 'chirashi.jpg',
+            ],
+            [
+                'name' => 'Carpaccio misto',
+                'restaurant_id' => $userBruce->restaurant->id,
+                'price' => 12.00,
+                'description' => 'Carpaccio con salmone, tonno e branzino',
+                'image' => 'carpaccio.jpg',
+            ],
+            [
+                'name' => 'Ramen di manzo',
+                'restaurant_id' => $userBruce->restaurant->id,
+                'price' => 8.00,
+                'description' => 'Spaghetti fatti a mano con verdure miste, uova e manzo',
+                'image' => 'ramen.jpg',
+            ],
+            //risto kebab/indiano
+            [
+                'name' => 'Kebab al piatto',
+                'restaurant_id' => $userFranca->restaurant->id,
+                'price' => 4.50,
+                'description' => 'Kebab con cipolla, peperoni e patatine fritte ',
+                'image' => 'piatto-kebab.jpg',
+            ],
+            [
+                'name' => 'Falafel',
+                'restaurant_id' => $userFranca->restaurant->id,
+                'price' => 3.00,
+                'description' => 'Deliziose polpette speziate ai legumi',
+                'image' => 'falafel.jpg',
+            ],
+            [
+                'name' => 'Masala dosa',
+                'restaurant_id' => $userFranca->restaurant->id,
+                'price' => 4.00,
+                'description' => 'Crepe di riso ripiena di patate aromatizzate',
+                'image' => 'masala.jpg',
+            ],
+            //pizzeria/fast-food
+            [
+                'name' => 'Capuozzo Burger',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 13.00,
+                'description' => 'Hamburger di scottona,cipolle caramellate,burrata, pesto di pistacchio e amore ❤️',
+                'image' => 'burger.jpg',
+            ],
+            [
+                'name' => 'Porky Burger',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 12.00,
+                'description' => 'Hamburger,porchetta di Ariccia,pomodori secchi e fontina',
+                'image' => 'porky.jpg',
+            ],
+            [
+                'name' => 'Ribs',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 10.00,
+                'description' => 'Ribs morbidissime in salsa barbecue',
+                'image' => 'ribs.jpg',
+            ],
+            [
+                'name' => 'Patatine cheddar e bacon',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 5.50,
+                'description' => 'Patatine fritte ricoperte da una fonduta di formaggio cheddar e scaglie di bacon fritto',
+                'image' => 'patacheese.jpg',
+            ],
+            [
+                'name' => 'Pizza ai 4 formaggi+',
+                'restaurant_id' => $userFrancesco->restaurant->id,
+                'price' => 14.00,
+                'description' => 'Mozzarella,provola,gorgonzola,parmiggiano, miele e noci',
+                'image' => '4-formaggi.jpg',
+            ],
 
         ];
 
@@ -243,6 +380,7 @@ class FoodSeeder extends Seeder
             File::makeDirectory(storage::path('image'));
         }
 
+
         foreach ($foods as $food) {
 
             // Per ogni food copio l'immagine contenuta all'interno di public/img/{nome immagine}
@@ -253,6 +391,11 @@ class FoodSeeder extends Seeder
             );
 
             $newFood = new Food();
+
+            if (array_key_exists('visibility', $food)) {
+                $newFood->visibility = $food['visibility'];
+            }
+
             $newFood->name = $food['name'];
             $newFood->restaurant_id = $food['restaurant_id'];
             $newFood->price = $food['price'];
