@@ -16,7 +16,8 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        <form id="registration-form" method="POST" action="{{ route('register') }}"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <h6 class="mb-5 mt-3">I campi contrassegnati da (*) sono obbligatori</h6>
@@ -27,7 +28,8 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" autocomplete="name" autofocus required minlength="2" maxlength="255">
+                                        value="{{ old('name') }}" autocomplete="name" autofocus required minlength="2"
+                                        maxlength="255">
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -43,7 +45,8 @@
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text"
                                         class="form-control @error('restaurant_name') is-invalid @enderror"
-                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required minlength="2" maxlength="100">
+                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required minlength="2"
+                                        maxlength="100">
 
                                     @error('restaurant_name')
                                         <span class="invalid-feedback" role="alert">
@@ -60,7 +63,8 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" autocomplete="address" required minlength="2" maxlength="100">
+                                        value="{{ old('address') }}" autocomplete="address" required minlength="2"
+                                        maxlength="100">
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -77,7 +81,8 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" minlength="2" maxlength="12">
+                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" minlength="2"
+                                        maxlength="12">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -110,7 +115,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password" minlength="8" >
+                                        required autocomplete="new-password" minlength="8">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -192,31 +197,48 @@
         const register_password = document.getElementById('password');
         const register_password_confirm = document.getElementById('password-confirm');
         const password_equal_register = document.querySelector('.password_equal_register');
-        register_submit.addEventListener('click', checkIfChecked);
-        register_password_confirm.addEventListener('focusout', checkPassword);
+
+        let passwordCheck = false;
+        let checkboxCheck = false;
+
+        register_submit.addEventListener('click', event => {
+            event.preventDefault();
+            checkboxCheck = checkIfChecked();
+            if (checkboxCheck && passwordCheck) {
+                const form = document.getElementById('registration-form');
+                form.submit();
+            }
+        });
+        register_password_confirm.addEventListener('focusout', () => {
+            passwordCheck = checkPassword();
+        });
+
+
         function checkIfChecked() {
             let validationCheck = false
-            for(let i=0; i<checkboxes.length; i++ ) {
-                if(checkboxes[i].checked ==true) {
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked == true) {
                     validationCheck = true
                 }
-            
             }
-            console.log('validationCheck=' + validationCheck);
-            if(validationCheck == false) {
+            if (validationCheck == false) {
                 types_required_register.classList.remove('d-none');
-                register_submit.preventDefault
+                return false;
             } else {
                 types_required_register.classList.add('d-none');
+                return true;
             }
         }
+
         function checkPassword() {
-            if(register_password.value != register_password_confirm.value) {
+            if (register_password.value != register_password_confirm.value) {
                 password_equal_register.classList.remove('d-none');
+                return false;
             } else {
                 password_equal_register.classList.add('d-none');
+                return true;
             }
         }
     </script>
-    
+
 @endsection
