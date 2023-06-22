@@ -163,8 +163,8 @@
                                 @foreach ($types as $type)
                                     <div class="pe-3">
                                         <input class="register_check" id="type_{{ $type->id }}"
-                                            @if (in_array($type->id, old('type', []))) checked @endif type="checkbox"
-                                            name="type[]" value="{{ $type->id }}">
+                                            onclick="disableButton()" @if (in_array($type->id, old('type', []))) checked @endif
+                                            type="checkbox" name="type[]" value="{{ $type->id }}">
                                         <label for="type_{{ $type->id }}">{{ $type->name }}</label>
                                     </div>
                                 @endforeach
@@ -178,7 +178,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button id="register_submit" type="submit" class="btn btn-primary">
+                                    <button id="register_submit" type="submit" class="btn btn-primary" disabled>
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -197,22 +197,32 @@
         const register_password = document.getElementById('password');
         const register_password_confirm = document.getElementById('password-confirm');
         const password_equal_register = document.querySelector('.password_equal_register');
+        const registrationForm = document.getElementById('registration-form');
+
+        const registraionName = document.getElementById('name');
+        const registraionRestaurantName = document.getElementById('restaurant_name');
+        const registraionAddress = document.getElementById('address');
+        const registraionPIva = document.getElementById('p_iva');
+        const registraionMail = document.getElementById('email');
+        const registraionPassword = document.getElementById('password');
+        const registraionPasswordConfirm = document.getElementById('password-confirm');
+
+        registraionName.addEventListener('focusout', disableButton);
+        registraionRestaurantName.addEventListener('focusout', disableButton);
+        registraionAddress.addEventListener('focusout', disableButton);
+        registraionPIva.addEventListener('focusout', disableButton);
+        registraionMail.addEventListener('focusout', disableButton);
+        registraionPassword.addEventListener('focusout', disableButton);
+        registraionPasswordConfirm.addEventListener('focusout', disableButton);
+
+
 
         let passwordCheck = false;
         let checkboxCheck = false;
 
-        register_submit.addEventListener('click', event => {
-            event.preventDefault();
-            checkboxCheck = checkIfChecked();
-            if (checkboxCheck && passwordCheck) {
-                const form = document.getElementById('registration-form');
-                form.submit();
-            }
-        });
         register_password_confirm.addEventListener('focusout', () => {
             passwordCheck = checkPassword();
         });
-
 
         function checkIfChecked() {
             let validationCheck = false
@@ -223,11 +233,14 @@
             }
             if (validationCheck == false) {
                 types_required_register.classList.remove('d-none');
+                console.log('true')
                 return false;
             } else {
                 types_required_register.classList.add('d-none');
+                console.log('false')
                 return true;
             }
+
         }
 
         function checkPassword() {
@@ -237,6 +250,17 @@
             } else {
                 password_equal_register.classList.add('d-none');
                 return true;
+            }
+        }
+
+        function disableButton() {
+            console.log('button disable');
+            if (registraionName.value && registraionRestaurantName.value && registraionAddress.value && registraionPIva
+                .value &&
+                registraionPassword.value && registraionPasswordConfirm.value && checkPassword() && checkIfChecked()) {
+                register_submit.disabled = false;
+            } else {
+                register_submit.disabled = true;
             }
         }
     </script>
