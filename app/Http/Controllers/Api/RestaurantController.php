@@ -15,21 +15,12 @@ class RestaurantController extends Controller
 
         $param_ids = $request->input('type_id');
 
-        // $restaurants = Restaurant::whereHas('types', function ($query) use ($param_ids) {
-        //     $query->whereIn('types.id', $param_ids);
-        // })->get();
-
-            $restaurants = Restaurant::with('types')->whereHas('types', function (Builder $query) use ($param_ids) {
-                $query->whereIn('types.id', $param_ids)
-                    ->groupBy('restaurant_id')
-                    ->select('restaurant_id')
-                    ->havingRaw('COUNT(DISTINCT types.id) = ' . count($param_ids));
-            })->get();
-
-
-
-
-
+        $restaurants = Restaurant::with('types')->whereHas('types', function (Builder $query) use ($param_ids) {
+            $query->whereIn('types.id', $param_ids)
+                ->groupBy('restaurant_id')
+                ->select('restaurant_id')
+                ->havingRaw('COUNT(DISTINCT types.id) = ' . count($param_ids));
+        })->get();
 
         return response()->json([
             'success' => true,
