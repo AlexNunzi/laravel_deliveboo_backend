@@ -13,4 +13,14 @@ class Order extends Model
     {
         return $this->belongsToMany(Food::class);
     }
+
+    protected $fillable = [
+        'customer_name',
+        'customer_phone_number',
+        'customer_address',
+        'customer_email',
+        'status',
+        'order_date',
+        'total_price'
+    ];
 }
