@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BraintreeController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\TypeController;
 use App\Http\Controllers\Api\FoodController;
@@ -25,3 +26,6 @@ Route::get('/types', [TypeController::class, 'index']);
 Route::get('/foods/{slug}', [FoodController::class, 'index']);
 
 Route::get('/restaurant/type', [RestaurantController::class, 'index']);
+
+Route::get('client/token', [BraintreeController::class, 'generateToken']);
+Route::post('client/make-payment', [BraintreeController::class, 'makePayment']);
