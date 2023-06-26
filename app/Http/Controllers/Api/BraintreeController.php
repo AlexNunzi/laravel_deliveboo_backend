@@ -32,6 +32,8 @@ class BraintreeController extends Controller
             $food_ids[] = $food['id'];
         }
 
+        $food_ids = array_unique($food_ids);
+
         $foods = Food::whereIn('id', $food_ids)->get();
 
         $totalPrice = null;
@@ -67,6 +69,12 @@ class BraintreeController extends Controller
         $order = new Order();
 
         $order->fill($orderInformation);
+        $order->status = true;
+        $order->save();
+
+        foreach ($request->food_ids as $food) {
+            $order->food()->attach($food['id'], ['quantity' => $food['quantity']]);
+        }
 
         if ($result->success) {
             $data = [
@@ -74,7 +82,7 @@ class BraintreeController extends Controller
                 'success' => true
             ];
             $order->status = true;
-            $order->save();
+            $order->update();
             return response()->json($data);
         } else {
             $data = [
@@ -82,7 +90,7 @@ class BraintreeController extends Controller
                 'success' => false
             ];
             $order->status = false;
-            $order->save();
+            $order->update();
             return response()->json($data);
         }
     }
