@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\OrderRequest;
+use App\Mail\NewContact;
 use App\Models\Food;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -81,6 +82,16 @@ class BraintreeController extends Controller
                 'message' => 'Transazione eseguita',
                 'success' => true
             ];
+                $oggettoNewContact = new NewContact($order);
+                
+                Mail::to('adelinarucaj99@gmail.com')->send($oggettoNewContact);
+
+                return response()->json(
+                    [
+                       'success'=> true
+                    ]
+            );
+
             $order->status = true;
             $order->update();
             return response()->json($data);
