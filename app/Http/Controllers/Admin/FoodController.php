@@ -73,7 +73,7 @@ class FoodController extends Controller
 
         $newFood = Food::create($form_data);
 
-        return redirect()->route('admin.foods.show', ['food' => $newFood->slug]);
+        return redirect()->route('admin.foods.index');
     }
 
     /**
@@ -145,7 +145,7 @@ class FoodController extends Controller
             }
 
             $food->update($validated_data);
-            return redirect()->route('admin.foods.show', ['food' => $food->slug]);
+            return redirect()->route('admin.foods.index');
         } else {
             return view('admin.error');
         }
