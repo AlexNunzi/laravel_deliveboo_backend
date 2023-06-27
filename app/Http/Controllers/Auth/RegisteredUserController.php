@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
                 'restaurant_name.max' => "I caratteri massimi del nome del ristorante sono :max",
                 'email.required' => "L'email è obbligatoria",
                 'email.string' => "L'email deve essere una stringa",
-                'email.email' => "L'email deve avere un formato coerente (es. info@deliveboo.com",
+                'email.email' => "L'email deve avere un formato coerente (es. info@deliveboo.com)",
                 'email.max' => "L'email deve avere al massimo :max caratteri",
                 'email.unique' => "L'email è gia presente nei nostri database",
                 'password.required' => "La password è obbligatoria",
