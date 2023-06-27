@@ -27,9 +27,21 @@ class OrderRequest extends FormRequest
             'token' => 'required',
             'food_ids' => 'required',
             'customer_name' => 'required',
-            'customer_phone_number' => 'required',
+            'customer_phone_number' => 'required|numeric',
             'customer_address' => 'required',
-            'customer_email' => 'required'
+            'customer_email' => 'required|email'
+        ];
+    }
+
+    public function messages()
+    {
+        return[
+            'customer_name.required' => 'Il nome è obbligatorio',
+            'customer_phone_number.required' => 'Il numero di telefono è obbligatorio',
+            'customer_phone_number.numeric' => 'Il numero di telefono non può contenere lettere',
+            'customer_address.required' => "La via è obbligatoria",
+            'customer_email.required' => "L'email è obbligatoria",
+            'customer_email.email' => "L'email deve avere un formato coerente (es. info@deliveboo.com)",
         ];
     }
 }
