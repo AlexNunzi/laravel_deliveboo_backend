@@ -594,7 +594,7 @@ class FoodSeeder extends Seeder
             $newFood->price = $food['price'];
             $newFood->description = $food['description'];
             $newFood->image = 'image/' . $food['image'];
-            $newFood->slug = Food::generateSlug($newFood->name);
+            $newFood->slug = Food::generateSlug($newFood->name, $food['restaurant_id']);
 
             $newFood->save();
         }

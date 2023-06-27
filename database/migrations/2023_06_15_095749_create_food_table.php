@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('CASCADE');
 
-            $table->string('name', 100)->unique();
+            $table->string('name', 100);
             $table->decimal('price', 4, 2, true);
             $table->text('description')->nullable();
             $table->string('image')->nullable();

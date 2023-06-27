@@ -189,7 +189,7 @@ class RestaurantSeeder extends Seeder
             $newRestaurant->image = 'image/' . $restaurant['image'];
             $newRestaurant->p_iva = $restaurant['p_iva'];
             $newRestaurant->description = $restaurant['description'];
-            $newRestaurant->slug = Food::generateSlug($newRestaurant->name);
+            $newRestaurant->slug = Restaurant::generateSlug($newRestaurant->name);
 
             $newRestaurant->save();
 
