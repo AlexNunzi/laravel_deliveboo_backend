@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewContact;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -36,8 +39,33 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request-all();
+        $validator = Validator::make($data ,
+        [
+           'customer_name'=> 'required',
+           'customer_phone_number'=> 'required',
+           'customer_address'=> 'required',
+           'customer_email'=> 'required|email',
+           'status'=> 'required',
+           'order_date'=> 'required',
+           'total_price'=> 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                [
+                    'success'=> false,
+                    'errors' => $validator->errors()
+                ]
+        );
+        }
+        $new_lead = new Order();
+        $new_lead->fill($data);
+        $new_lead->save();
+
+
     }
+
 
     /**
      * Display the specified resource.
