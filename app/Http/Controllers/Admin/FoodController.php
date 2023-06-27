@@ -59,11 +59,11 @@ class FoodController extends Controller
 
         $form_data['restaurant_id'] = $user->restaurant->id;
 
-        $form_data['slug'] = Food::generateSlug($request->name);
+        $form_data['slug'] = Food::generateSlug($request->name, $user->restaurant->id);
 
         $checkPost = Food::where('slug', $form_data['slug'])->first();
         if ($checkPost) {
-            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo progetto, cambia il titolo']);
+            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo piatto, cambia il nome']);
         }
 
         if ($request->hasFile('image')) {

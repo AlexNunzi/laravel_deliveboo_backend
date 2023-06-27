@@ -24,7 +24,7 @@ class StoreFoodRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:150|unique:food',
+            'name' => 'required|string|max:150',
             'price' => 'required|decimal:0,2|max:99.99',
             'description' => 'nullable|string|max:2000',
             'image' => 'nullable|image|max:1024',
@@ -33,10 +33,9 @@ class StoreFoodRequest extends FormRequest
 
     public function messages()
     {
-        return[
+        return [
             'name.required' => 'Il nome è obbligatorio',
             'name.string' => 'Il nome deve essere una stringa',
-            'name.unique' => 'Il nome del cibo deve essere unico',
             'name.max' => 'Il nome deve avere al massimo :max caratteri',
             'price.required' => 'Il prezzo è obbligatorio',
             'price.decimal' => 'Il prezzo deve avere al massimo due cifre decimali',
