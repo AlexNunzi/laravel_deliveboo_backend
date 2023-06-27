@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Mail\NewContact;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -61,7 +63,7 @@ class OrderController extends Controller
         $new_lead->fill($data);
         $new_lead->save();
 
-       
+
     }
 
 

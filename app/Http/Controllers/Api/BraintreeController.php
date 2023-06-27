@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\OrderRequest;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\NewContact;
+use App\Mail\FeedbackToCustomer;
 use App\Models\Food;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -73,8 +75,15 @@ class BraintreeController extends Controller
         $order->status = true;
         $order->save();
 
+        $mailContent = [];
+
         foreach ($request->food_ids as $food) {
             $order->food()->attach($food['id'], ['quantity' => $food['quantity']]);
+            $mailContent[] = [
+                'name'=>$food['name'],
+                'price'=>$food['price'],
+                'quantity'=>$food['quantity']
+            ];
         }
 
         if ($result->success) {
@@ -82,9 +91,12 @@ class BraintreeController extends Controller
                 'message' => 'Transazione eseguita',
                 'success' => true
             ];
-                $oggettoNewContact = new NewContact($order);
-                
+                $oggettoNewContact = new NewContact($order, $mailContent);
+                $castomerNew = new FeedbackToCustomer($order, $mailContent);
+
+
                 Mail::to('adelinarucaj99@gmail.com')->send($oggettoNewContact);
+                Mail::to($request->customer_email)->send($castomerNew);
 
                 return response()->json(
                     [

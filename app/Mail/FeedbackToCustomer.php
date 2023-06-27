@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewContact extends Mailable
+class FeedbackToCustomer extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,11 +22,10 @@ class NewContact extends Mailable
      */
     public function __construct($_lead, $_foods)
     {
-         $this->lead = $_lead;
-         $this->foods = $_foods;
+        $this->lead = $_lead;
+        $this->foods = $_foods;
+
     }
-
-
 
     /**
      * Get the message envelope.
@@ -36,7 +35,7 @@ class NewContact extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Nuovo contatto da DeliveBoo',
+            subject: 'Feedback To Customer',
             replyTo: $this->lead->customer_email
         );
     }
@@ -49,7 +48,7 @@ class NewContact extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.new-contact-mail',
+            view: 'emails.new-feedback-to-customer',
         );
     }
 
