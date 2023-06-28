@@ -13,221 +13,163 @@
         </div>
     </div>
     <div class="row align-items-md-stretch">
+        <h1 class="text-center">Statistiche degli ordini</h1>
         <div class="col-md-6">
-            <div class="h-100 p-5 text-white bg-dark rounded-3">
-                <h2>Change the background</h2>
-                <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then,
-                    mix and match with additional component themes and more.</p>
-                <button class="btn btn-outline-light" type="button">Example button</button>
+            <div class="h-100 p-2 bg-light rounded-3">
+                <canvas id="revenueChart" class="mb-5"></canvas>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="h-100 p-5 bg-light border rounded-3">
-                <h2>Add borders</h2>
-                <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure
-                    to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both
-                    column's content for equal-height.</p>
-                <button class="btn btn-outline-secondary" type="button">Example button</button>
+            <div class="h-100 p-2 bg-light border rounded-3">
+                <canvas id="orderNumberChart" class="mb-5"></canvas>
             </div>
         </div>
     </div>
 
+    {{-- card utente con dati del ristoratore --}}
     <div class="container index-statistics">
         <div class="row">
+            <div class="col-md-4 mt-5 mb-5">
+                <div class="h-100 p-2 bg-light border rounded-3">
+                    <h3 class="user-title"> Dati del ristoratore </h3>
 
-            {{-- benvenuto/gestisci utente --}}
-            <div class="col-lg-9 statistic">
-                <div class="benvenuto-statistic mb-3">
-                    <h1 class="text-center">Statistiche degli ordini</h1>
-                </div>
-
-                <div class="row no-gutters">
-                    <div class="col">
-                        <canvas id="revenueChart" class="mb-5"></canvas>
-                        <canvas id="orderNumberChart" class="mb-5"></canvas>
-                        <canvas id="dishesRankChart" class="mb-5"></canvas>
+                    <div id="user-info">
+                        <div>
+                            <strong>Nome ristoratore:</strong>
+                            {{ Auth::user()->name }}
+                        </div>
+                        <div>
+                            <strong>Email:</strong>
+                            {{ Auth::user()->email }}
+                        </div>
+                        <div>
+                            <strong>Partita IVA:</strong>
+                            {{ Auth::user()->restaurant->p_iva }}
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-            {{-- aside lg --}}
-            <aside class="col-lg-3 px-0 aside">
-
-                {{-- card utente --}}
-                <h3 class="user-title">
-                    Dati del ristoratore
-                </h3>
-                <div id="user-info">
-                    <ul>
-                        {{-- nome utente --}}
-                        <li>
-                            <div>
-
-                                <span>Nome utente</span>
-                            </div>
-                            <span class="info">
-                                {{ Auth::user()->name }} {{ Auth::user()->surname }}
-                            </span>
-                        </li>
-                        {{-- email utente --}}
-                        <li>
-                            <div>
-
-                                <span>Email</span>
-                            </div>
-                            <span class="info">
-                                {{ Auth::user()->email }}
-                            </span>
-                        </li>
-                        {{-- partita iva utente --}}
-                        <li>
-                            <div>
-
-                                <span>Partita iva</span>
-                            </div>
-                            <span class="info">
-                                {{ Auth::user()->restaurant->p_iva }}
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-
-                {{-- container bottoni --}}
-                @if ($restaurant)
-                    <div id="btn-container">
-                        {{-- bottone ristorante --}}
-                        <a href="{{ route('admin.foods.index') }}" class="text-center btn btn-primary">
-                            Piatti
-                        </a>
-                        {{-- bottone ordini da aggiungere rotta --}}
-                        {{-- <a href="{{ route('') }}"> --}}
-                        <button class="btn">
-                            <i class="fa-solid fa-basket-shopping"></i> Ordini
-                        </button>
-                        </a>
-
-                    </div>
-                @endif
-            </aside>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <script>
-            let checkPush = false;
+    <script>
+        let checkPush = false;
 
-            // ////////////////////////
-            //      revenue chart   //
-            // //////////////////////
-            let revenueOrders = {!! json_encode($ordersRevenue) !!};
-            // console.log(revenueOrders)
+        // ////////////////////////
+        //      revenue chart   //
+        // //////////////////////
+        let revenueOrders = {!! json_encode($ordersRevenue) !!};
+        // console.log(revenueOrders)
 
-            let revenueData = [];
-            let revenueLabels = [];
+        let revenueData = [];
+        let revenueLabels = [];
 
-            for (let i = 0; i < 12; i++) {
-                let today = new Date();
-                today.setMonth(today.getMonth() - i);
+        for (let i = 0; i < 12; i++) {
+            let today = new Date();
+            today.setMonth(today.getMonth() - i);
 
-                date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2)
+            date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2)
 
-                checkPush = false;
+            checkPush = false;
 
-                revenueOrders.forEach(elm => {
-                    if (elm.date == date) {
-                        revenueData.push(elm.total);
-                        revenueLabels.push(date);
-                        checkPush = true;
-
-
-                    }
-                });
-
-                if (!checkPush) {
-                    revenueData.push(0);
+            revenueOrders.forEach(elm => {
+                if (elm.date == date) {
+                    revenueData.push(elm.total);
                     revenueLabels.push(date);
+                    checkPush = true;
+
+
                 }
+            });
+
+            if (!checkPush) {
+                revenueData.push(0);
+                revenueLabels.push(date);
             }
+        }
 
-            const dataRevenue = {
-                labels: revenueLabels.reverse(),
-                datasets: [{
-                    label: 'Fatturato ultimi 12 mesi',
-                    backgroundColor: '#00CCBC',
-                    borderColor: '#00CCBC',
-                    data: revenueData.reverse(),
-                }, ]
-            };
+        const dataRevenue = {
+            labels: revenueLabels.reverse(),
+            datasets: [{
+                label: 'Fatturato ultimi 12 mesi',
+                backgroundColor: '#00CCBC',
+                borderColor: '#00CCBC',
+                data: revenueData.reverse(),
+            }, ]
+        };
 
-            const configRevenue = {
-                type: 'line',
-                data: dataRevenue,
-                options: {},
-                responsive: true,
-            };
+        const configRevenue = {
+            type: 'line',
+            data: dataRevenue,
+            options: {},
+            responsive: true,
+        };
 
-            const revenueChart = new Chart(
-                document.getElementById('revenueChart'),
-                configRevenue
-            );
+        const revenueChart = new Chart(
+            document.getElementById('revenueChart'),
+            configRevenue
+        );
 
 
-            // /////////////////////////////
-            //      order number chart   //
-            // ///////////////////////////
-            let countOrders = {!! json_encode($ordersCount) !!};
+        // /////////////////////////////
+        //      order number chart   //
+        // ///////////////////////////
+        let countOrders = {!! json_encode($ordersCount) !!};
 
-            let ordersCountData = [];
-            let ordersLabels = [];
+        let ordersCountData = [];
+        let ordersLabels = [];
 
-            for (let i = 0; i < 12; i++) {
-                let today = new Date();
-                today.setMonth(today.getMonth() - i);
+        for (let i = 0; i < 12; i++) {
+            let today = new Date();
+            today.setMonth(today.getMonth() - i);
 
-                date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2)
+            date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2)
 
-                checkPush = false;
+            checkPush = false;
 
-                countOrders.forEach(elm => {
-                    if (elm.date == date) {
-                        ordersCountData.push(elm.orderTotal);
-                        ordersLabels.push(date);
-                        checkPush = true;
-                    }
-                });
-
-                if (!checkPush) {
-                    ordersCountData.push(0);
+            countOrders.forEach(elm => {
+                if (elm.date == date) {
+                    ordersCountData.push(elm.orderTotal);
                     ordersLabels.push(date);
+                    checkPush = true;
                 }
+            });
+
+            if (!checkPush) {
+                ordersCountData.push(0);
+                ordersLabels.push(date);
             }
+        }
 
-            const dataOrder = {
-                labels: ordersLabels.reverse(),
-                datasets: [{
-                        label: 'Numero ordini ultimi 12 mesi',
-                        backgroundColor: '#D0EB99',
-                        borderColor: '#D0EB99',
-                        data: ordersCountData.reverse(),
-                    },
+        const dataOrder = {
+            labels: ordersLabels.reverse(),
+            datasets: [{
+                    label: 'Numero ordini ultimi 12 mesi',
+                    backgroundColor: '#D0EB99',
+                    borderColor: '#D0EB99',
+                    data: ordersCountData.reverse(),
+                },
 
-                ]
-            };
+            ]
+        };
 
-            const configOrder = {
-                type: 'bar',
-                data: dataOrder,
-                options: {},
-                responsive: true,
-            };
+        const configOrder = {
+            type: 'bar',
+            data: dataOrder,
+            options: {},
+            responsive: true,
+        };
 
-            const orderNumberChart = new Chart(
-                document.getElementById('orderNumberChart'),
-                configOrder
-            );
-        </script>
-    @endsection
+        const orderNumberChart = new Chart(
+            document.getElementById('orderNumberChart'),
+            configOrder
+        );
+    </script>
+@endsection
 
-    {{-- <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Cibi</a>
+{{-- <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Cibi</a>
 <a class="btn btn-warning" href="{{ route('admin.foods.create') }}">Aggiungi piatto</a>
 Benvenuti nella parte amministrativa di Deliveboo! Da qui puoi gestire i tuoi piatti aggiungendone, se vuoi, degli altri! Prova i bottoni qua sotto per provare le funzionalità! --}}

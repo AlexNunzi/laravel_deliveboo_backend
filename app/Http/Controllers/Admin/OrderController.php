@@ -32,42 +32,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $data = $request-all();
-        $validator = Validator::make($data ,
-        [
-           'customer_name'=> 'required',
-           'customer_phone_number'=> 'required',
-           'customer_address'=> 'required',
-           'customer_email'=> 'required|email',
-           'status'=> 'required',
-           'order_date'=> 'required',
-           'total_price'=> 'required'
-        ]);
-
-        if($validator->fails()){
-            return response()->json(
-                [
-                    'success'=> false,
-                    'errors' => $validator->errors()
-                ]
-        );
-        }
-        $new_lead = new Order();
-        $new_lead->fill($data);
-        $new_lead->save();
-
-
-    }
-
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Order  $order
