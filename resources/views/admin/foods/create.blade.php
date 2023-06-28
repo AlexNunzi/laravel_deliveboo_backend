@@ -41,7 +41,8 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" maxlength="1000">{{ old('description') }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                    maxlength="1000">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -68,7 +69,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
-            <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
+            <a class="btn btn-primary" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
 
         </form>
     </div>
