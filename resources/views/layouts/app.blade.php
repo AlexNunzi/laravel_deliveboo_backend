@@ -14,6 +14,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -51,11 +54,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                    <a class="dropdown-item hover-dropdown"
+                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item hover-dropdown" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                                 document.getElementById('logout-form').submit();"><i
+                                            class="fa-solid fa-arrow-right-from-bracket"></i>
                                         {{ __('Logout') }}
                                     </a>
                                     {{-- <a class="dropdown-item" href="{{route('admin.foods.index')}}">Cibi</a>

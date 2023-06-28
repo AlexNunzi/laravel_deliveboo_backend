@@ -7,13 +7,15 @@
             <p class="lead">Benvenuti nella parte amministrativa di Deliveboo! Da qui puoi gestire i tuoi piatti
                 aggiungendone, se vuoi, degli altri! Prova i bottoni qua sotto per provare le funzionalità!</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                <a class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href="{{ route('admin.foods.index') }}">Cibi</a>
-                <a class="btn btn-outline-secondary btn-lg px-4"href="{{ route('admin.foods.create') }}">Aggiungi Piatto</a>
+                <a class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href="{{ route('admin.foods.index') }}"><i
+                        class="fa-solid fa-pizza-slice"></i> Cibi</a>
+                <a class="btn btn-outline-secondary btn-lg px-4"href="{{ route('admin.foods.create') }}"><i
+                        class="fa-solid fa-plus"></i> Aggiungi Piatto</a>
             </div>
         </div>
     </div>
     <div class="row align-items-md-stretch">
-        <h1 class="text-center">Statistiche degli ordini</h1>
+        <h1 class="text-center"><i class="fa-solid fa-chart-column"></i> Statistiche degli ordini</h1>
         <div class="col-md-6">
             <div class="h-100 p-2 bg-light border rounded-3">
                 <canvas id="revenueChart" class="mb-5"></canvas>
@@ -31,7 +33,7 @@
         <div class="row">
             <div class="col-md-4 mt-5 mb-5">
                 <div class="h-100 p-2 bg-light border rounded-3">
-                    <h3 class="user-title"> Dati del ristoratore </h3>
+                    <h3 class="user-title"><i class="fa-solid fa-user"></i> Dati del ristoratore </h3>
 
                     <div id="user-info">
                         <div>
