@@ -15,7 +15,7 @@
     <div class="row align-items-md-stretch">
         <h1 class="text-center">Statistiche degli ordini</h1>
         <div class="col-md-6">
-            <div class="h-100 p-2 bg-light rounded-3">
+            <div class="h-100 p-2 bg-light border rounded-3">
                 <canvas id="revenueChart" class="mb-5"></canvas>
             </div>
         </div>
@@ -52,7 +52,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
