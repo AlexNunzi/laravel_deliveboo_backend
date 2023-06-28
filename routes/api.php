@@ -30,4 +30,3 @@ Route::get('/restaurant/type', [RestaurantController::class, 'index']);
 
 Route::get('client/token', [BraintreeController::class, 'generateToken']);
 Route::post('client/make-payment', [BraintreeController::class, 'makePayment']);
-Route::post('/contacts', [LeadController::class, 'store']);
