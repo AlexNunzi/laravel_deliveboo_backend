@@ -22,17 +22,17 @@ class DashboardController extends Controller
 
         $ordersRevenue = Order::with('food')->whereHas('food', function (Builder $query) use ($restaurant) {
             $query->where('restaurant_id', $restaurant->id);
-        })->whereBetween('created_at', [$dateMinus12, $lastDay])
+        })->whereBetween('order_date', [$dateMinus12, $lastDay])
             ->selectRaw("SUM(total_price) AS total")
-            ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') AS date")
+            ->selectRaw("DATE_FORMAT(order_date, '%Y-%m') AS date")
             ->groupby("date")
             ->orderBy("date", "DESC")->get();
 
         $ordersCount = Order::with('food')->whereHas('food', function (Builder $query) use ($restaurant) {
             $query->where('restaurant_id', $restaurant->id);
-        })->whereBetween('created_at', [$dateMinus12, $lastDay])
+        })->whereBetween('order_date', [$dateMinus12, $lastDay])
             ->selectRaw("COUNT(id) AS orderTotal")
-            ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') AS date")
+            ->selectRaw("DATE_FORMAT(order_date, '%Y-%m') AS date")
             ->groupby("date")
             ->orderBy("date", "DESC")->get();
 
