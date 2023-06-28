@@ -40,6 +40,17 @@
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <ul class="list-unstyled m-0 d-none d-md-flex">
+                    <li class="me-3">
+                        <a class="text-decoration-none text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a class="text-decoration-none text-dark me-3" href="{{ route('admin.orders.index') }}">Ordini</a>
+                    </li>
+                    <li>
+                        <a class="text-decoration-none text-dark" href="{{ route('admin.foods.index') }}">Il tuo menù</a>
+                    </li>
+                </ul>
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -49,17 +60,16 @@
                         @auth
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"
+                            <div class="dropdown-menu-right fs-5" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item d-md-none"
                                     href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
 
-                                    <a class="dropdown-item"
-                                    href="{{ route('admin.orders.index') }}">{{ __('Orders') }}</a>
+                                    <a class="dropdown-item d-md-none"
+                                    href="{{ route('admin.orders.index') }}">{{ __('Ordini') }}</a>
+
+                                    <a class="dropdown-item d-md-none"
+                                    href="{{ route('admin.foods.index') }}">{{ __('Il tuo menù') }}</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -85,7 +95,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+
                         @endauth
 
                     </ul>

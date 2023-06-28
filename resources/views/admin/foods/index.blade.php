@@ -36,8 +36,8 @@
 
         @empty
             <p>Non ci sono cibi</p>
-            <a class="btn btn-primary" href="{{ route('admin.dashboard') }}">Vai alla dashboard</a>
+            <a class="btn btn-warning" href="{{ route('admin.dashboard') }}">Vai alla dashboard</a>
         @endforelse
     </div>
-    <a class="btn btn-primary mt-4 mb-4" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
+    <a class="btn btn-warning mt-4 mb-4" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
 @endsection

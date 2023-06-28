@@ -19,16 +19,9 @@
     }
 }
 
-.btn {
-    background-color: #FFC109;
-    border: #ce9c06;
+.btn-warning:hover {
+    background: orange;
     color: black;
-
-    &:hover {
-        background: orange;
-        color: black;
-
-    }
 }
 
 .hover-dropdown:hover {
