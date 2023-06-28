@@ -80,9 +80,9 @@ class BraintreeController extends Controller
         foreach ($request->food_ids as $food) {
             $order->food()->attach($food['id'], ['quantity' => $food['quantity']]);
             $mailContent[] = [
-                'name'=>$food['name'],
-                'price'=>$food['price'],
-                'quantity'=>$food['quantity']
+                'name' => $food['name'],
+                'price' => $food['price'],
+                'quantity' => $food['quantity']
             ];
         }
 
@@ -91,17 +91,17 @@ class BraintreeController extends Controller
                 'message' => 'Transazione eseguita',
                 'success' => true
             ];
-                $oggettoNewContact = new NewContact($order, $mailContent);
-                $castomerNew = new FeedbackToCustomer($order, $mailContent);
+            $oggettoNewContact = new NewContact($order, $mailContent);
+            $castomerNew = new FeedbackToCustomer($order, $mailContent);
 
 
-                Mail::to('adelinarucaj99@gmail.com')->send($oggettoNewContact);
-                Mail::to($request->customer_email)->send($castomerNew);
+            Mail::to('giuliadai1508@gmail.com')->send($oggettoNewContact);
+            Mail::to($request->customer_email)->send($castomerNew);
 
-                return response()->json(
-                    [
-                       'success'=> true
-                    ]
+            return response()->json(
+                [
+                    'success' => true
+                ]
             );
 
             $order->status = true;
