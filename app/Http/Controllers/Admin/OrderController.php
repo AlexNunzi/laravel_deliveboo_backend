@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\NewContact;
 use App\Models\Order;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+
 
 class OrderController extends Controller
 {
@@ -18,7 +24,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = Restaurant::where('user_id', Auth::user()->id)->first();
+
+        $orders = Order::with('food')->whereHas('food', function (Builder $query) use ($restaurants){
+           $query->where('restaurant_id' , $restaurants->id);
+
+        })->orderBy('order_date', 'desc')->get();
+
+        return view('admin.orders.index', compact('orders'));
+
+
     }
 
     /**
