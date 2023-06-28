@@ -54,6 +54,9 @@
                                 <a class="dropdown-item"
                                     href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
 
+                                    <a class="dropdown-item"
+                                    href="{{ route('admin.orders.index') }}">{{ __('Orders') }}</a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
