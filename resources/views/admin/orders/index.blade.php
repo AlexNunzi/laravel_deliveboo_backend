@@ -2,7 +2,6 @@
 
 
 @section('content')
-<h1>Incasso totale: </h1>
 
 @forelse ($orders as $order )
 
@@ -37,9 +36,9 @@
            @foreach ($order->food as $food )
             <div class="pt-4 d-flex">
                 <h5 class="pe-2">{{$food->name}}</h5>
-                <span class="pe-2">quantità</span>
-                <span class="pe-2">{{$food->price}}€</span>
-                <span class="pe-2">prezzo singolo * quantità</span>
+                <span class="pe-2">Quantità: {{$food->pivot->quantity}}</span>
+                <span class="pe-2">Prezzo singolo: {{$food->price}}€</span>
+
             </div>
            @endforeach
 
