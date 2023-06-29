@@ -124,8 +124,7 @@ class FoodController extends Controller
             } else {
                 $validated_data['visibility'] = false;
             }
-            $validated_data['slug'] = Food::generateSlug($request->name);
-
+            $validated_data['slug'] = Food::generateSlug($request->name, $food->restaurant->id);
             $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', $food->id)->first();
 
             if ($checkFood) {
