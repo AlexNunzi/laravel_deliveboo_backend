@@ -1,21 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class=" d-flex justify-content-center my-3 p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3 ">
+    <div class="row justify-content-center my-3 p-4 my-transparent-container align-items-center rounded-3 border shadow-lg">
+        <div class="col-md-8 p-3 p-lg-5 pt-lg-3 ">
             <h1 class="display-4 fw-bold lh-1">Benvenuto {{ Auth::user()->name }}!</h1>
             <p class="lead">Benvenuto nella parte amministrativa di Deliveboo! Da qui puoi gestire i tuoi piatti
                 aggiungendone, se vuoi, degli altri! Prova i bottoni qua sotto per provare le funzionalità!</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                <a class="btn btn-warning btn-lg px-4 me-md-2 fw-bold" href="{{ route('admin.foods.index') }}"><i
+                <a class="btn fancy-button bg-primary px-4 me-md-3" href="{{ route('admin.foods.index') }}"><i
                         class="fa-solid fa-pizza-slice"></i> Il tuo menù</a>
-                <a class="btn btn-warning btn-lg px-4"href="{{ route('admin.foods.create') }}"><i
+                <a class="btn fancy-button bg-success px-4"href="{{ route('admin.foods.create') }}"><i
                         class="fa-solid fa-plus"></i> Aggiungi Piatto</a>
+            </div>
+        </div>
+
+        {{-- card utente con dati del ristoratore --}}
+        <div class="index-statistics col-md-4">
+            <div class="h-100 p-3 bg-light border rounded-3">
+                <h3 class="user-title"><i class="fa-solid fa-building-user"></i> Dati del ristorante </h3>
+
+                <div id="user-info">
+                    <div>
+                        <strong>Nome ristorante:</strong>
+                        {{ Auth::user()->restaurant->name }}
+                    </div>
+                    <div>
+                        <strong>Email:</strong>
+                        {{ Auth::user()->email }}
+                    </div>
+                    <div>
+                        <strong>Partita IVA:</strong>
+                        {{ Auth::user()->restaurant->p_iva }}
+                    </div>
+                    <div>
+                        <strong>Fatturato totale:</strong>
+                        {{ number_format($fatturato, 2) }} €
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="row align-items-md-stretch">
-        <h1 class="text-center"><i class="fa-solid fa-chart-column"></i> Statistiche degli ordini</h1>
+        <h1 id="statistics" class="text-center text-white"><i class="fa-solid fa-chart-column"></i> Statistiche degli ordini
+        </h1>
         <div class="col-md-6 mb-2">
             <div class="h-100 my-2 p-2 bg-light border rounded-3">
                 <canvas id="revenueChart" class="mb-5"></canvas>
@@ -24,33 +51,6 @@
         <div class="col-md-6 mt-2 ">
             <div class="h-100 p-2 bg-light border rounded-3">
                 <canvas id="orderNumberChart" class="mb-5"></canvas>
-            </div>
-        </div>
-    </div>
-
-    {{-- card utente con dati del ristoratore --}}
-    <div class="container index-statistics">
-        <div class="row">
-            <div class="col-md-4 mt-5 mb-5">
-                <div class="h-100 p-2 bg-light border rounded-3">
-                    <h3 class="user-title"><i class="fa-solid fa-user"></i> Dati del ristoratore </h3>
-
-                    <div id="user-info">
-                        <div>
-                            <strong>Nome ristoratore:</strong>
-                            {{ Auth::user()->name }}
-                        </div>
-                        <div>
-                            <strong>Email:</strong>
-                            {{ Auth::user()->email }}
-                        </div>
-                        <div>
-                            <strong>Partita IVA:</strong>
-                            {{ Auth::user()->restaurant->p_iva }}
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -70,9 +70,13 @@
 
         for (let i = 0; i < 12; i++) {
             let today = new Date();
+            console.log('new date' + today);
+            console.log('meno i ' + (today.getMonth() - i));
             today.setMonth(today.getMonth() - i);
-
-            date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2)
+            console.log('today' + today);
+            date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2);
+            console.log(
+                'date' + date);
 
             checkPush = false;
 

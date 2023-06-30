@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="bg-light p-3 rounded-3 mt-3">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -51,7 +51,8 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" maxlength="1000">{{ old('description', $food->description) }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                    maxlength="1000">{{ old('description', $food->description) }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -88,7 +89,7 @@
     </div>
 
     <script>
-        function prova(){
+        function prova() {
             const btnDelete = document.getElementById('my-btn');
             const formDelete = document.getElementById('my-form');
             formDelete.submit();

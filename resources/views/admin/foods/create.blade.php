@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div>
+    <div class="bg-light p-3 rounded-3 mt-3">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
