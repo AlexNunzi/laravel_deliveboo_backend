@@ -24,11 +24,11 @@
                         {{-- <a class="btn rounded-pill btn-primary me-2"
                             href="{{ route('admin.foods.show', $food->slug) }}">VEDI</a> --}}
                         <a href="{{ route('admin.foods.edit', $food->slug) }}"
-                            class="btn rounded-pill btn-warning me-2">MODIFICA</a>
+                            class="btn fancy-button bg-warning me-3">MODIFICA</a>
                         <form action="{{ route('admin.foods.destroy', ['food' => $food->slug]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn rounded-pill btn-danger">ELIMINA</button>
+                            <button type="submit" class="btn fancy-button bg-danger">ELIMINA</button>
                         </form>
                     </div>
                 </div>
@@ -39,5 +39,7 @@
             <a class="btn btn-warning" href="{{ route('admin.dashboard') }}">Vai alla dashboard</a>
         @endforelse
     </div>
-    <a class="btn btn-warning mt-4 mb-4" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
+    <div class="text-center">
+        <a class="btn fancy-button bg-primary mt-4 mb-4" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
+    </div>
 @endsection

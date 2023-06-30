@@ -178,7 +178,8 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button id="register_submit" type="submit" class="btn btn-primary" disabled>
+                                    <button id="register_submit" type="submit" class="btn fancy-button bg-primary"
+                                        disabled>
                                         {{ __('Register') }}
                                     </button>
                                 </div>

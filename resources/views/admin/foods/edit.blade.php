@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="bg-light p-3 rounded-3 mt-3">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -51,7 +51,8 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" maxlength="1000">{{ old('description', $food->description) }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                    maxlength="1000">{{ old('description', $food->description) }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -77,8 +78,12 @@
                 <label class="form-check-label" for="visibility">Visibile</label>
             </div>
 
-            <button type="submit" class="btn btn-primary">Salva</button>
-            <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
+            <div class="mt-4">
+                <button type="submit" class="btn fancy-button bg-success me-3"><i class="fa-solid fa-check"></i>
+                    Salva
+                </button>
+                <a class="btn fancy-button bg-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
+            </div>
         </form>
         <form id="my-form" action="{{ route('admin.foods.deleteImage', ['slug' => $food->slug]) }}" method="POST">
             @csrf
@@ -88,7 +93,7 @@
     </div>
 
     <script>
-        function prova(){
+        function prova() {
             const btnDelete = document.getElementById('my-btn');
             const formDelete = document.getElementById('my-form');
             formDelete.submit();

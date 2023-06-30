@@ -36,6 +36,11 @@ class DashboardController extends Controller
             ->groupby("date")
             ->orderBy("date", "DESC")->get();
 
+        $fatturato = 0;
+        foreach ($ordersRevenue as $order) {
+            $fatturato += $order->total;
+        }
+
         // $ordersRevenue = Order::where('id', $restaurants_id)
         //     ->whereBetween('created_at', [$dateMinus12, $lastDay])
         //     ->selectRaw("SUM(total_price) AS total")
@@ -52,6 +57,6 @@ class DashboardController extends Controller
         //     ->orderBy("date", "DESC")
         //     ->get();
 
-        return view('admin.dashboard', compact('ordersRevenue', 'ordersCount', 'restaurant'));
+        return view('admin.dashboard', compact('ordersRevenue', 'ordersCount', 'restaurant', 'fatturato'));
     }
 }
