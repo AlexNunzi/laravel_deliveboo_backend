@@ -78,8 +78,10 @@
                 <label class="form-check-label" for="visibility">Visibile</label>
             </div>
 
-            <button type="submit" class="btn btn-primary">Salva</button>
-            <a class="btn btn-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
+            <div class="mt-4">
+                <button type="submit" class="btn fancy-button bg-success me-3">Salva</button>
+                <a class="btn fancy-button bg-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
+            </div>
         </form>
         <form id="my-form" action="{{ route('admin.foods.deleteImage', ['slug' => $food->slug]) }}" method="POST">
             @csrf

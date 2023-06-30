@@ -14,8 +14,9 @@
 
     .my-img-delete {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 0.25rem;
+        right: 0.25rem;
+        padding: 0rem 0.25rem;
     }
 }
 
@@ -67,7 +68,7 @@ img{
 
 .fancy-button {
     display: inline-block;
-    padding: 5px;
+    padding: 0.5rem 1rem;
     border: none;
     background-color: orange;
     color: #fff;

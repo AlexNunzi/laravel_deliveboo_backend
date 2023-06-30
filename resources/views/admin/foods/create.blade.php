@@ -67,9 +67,10 @@
                     value="1" @if (old('visibility')) checked @endif>
                 <label class="form-check-label" for="visibility">Visibile</label>
             </div>
-
-            <button type="submit" class="btn btn-primary">Salva</button>
-            <a class="btn btn-primary" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
+            <div class="mt-4">
+                <button type="submit" class="btn fancy-button bg-success me-3">Salva</button>
+                <a class="btn fancy-button bg-primary" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
+            </div>
 
         </form>
     </div>

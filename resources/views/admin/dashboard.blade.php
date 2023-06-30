@@ -70,13 +70,13 @@
 
         for (let i = 0; i < 12; i++) {
             let today = new Date();
-            console.log('new date' + today);
+            console.log('new date ' + today);
             console.log('meno i ' + (today.getMonth() - i));
             today.setMonth(today.getMonth() - i);
-            console.log('today' + today);
+            console.log('today ' + today);
+            console.log('today +1 ' + (today.getMonth() + 1));
             date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2);
-            console.log(
-                'date' + date);
+            console.log('date ' + date);
 
             checkPush = false;
 

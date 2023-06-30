@@ -53,9 +53,9 @@
             <h3 class="text-center mt-3">Non ci sono ordini!</h3>
         @endforelse
         <div class="d-flex justify-content-center">
-            <a class="btn fancy-button bg-warning mt-4 mb-4" href="{{ route('admin.dashboard') }}">Visualizza
-                grafico
-                ordini</a>
+            <a class="btn fancy-button bg-primary mt-4 mb-4" href="{{ route('admin.dashboard') }}">
+                <i class="fa-solid fa-chart-line"></i>
+                Visualizza grafico ordini</a>
         </div>
     </div>
 
