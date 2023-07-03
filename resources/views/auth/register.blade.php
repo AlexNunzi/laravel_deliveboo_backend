@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('Registrati') }}</div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -182,7 +182,7 @@
                                 <div class="col-md-6 offset-md-4">
                                     <button id="register_submit" type="submit" class="btn fancy-button bg-primary"
                                         disabled>
-                                        {{ __('Register') }}
+                                        {{ __('Registrati') }}
                                     </button>
                                 </div>
                             </div>

@@ -7,8 +7,8 @@
             <p class="lead">Benvenuto nella parte amministrativa di Deliveboo! Da qui puoi gestire i tuoi piatti
                 aggiungendone, se vuoi, degli altri! Prova i bottoni qua sotto per provare le funzionalità!</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                <a class="btn fancy-button bg-primary px-4 me-md-3" href="{{ route('admin.foods.index') }}"><i
-                        class="fa-solid fa-pizza-slice"></i> Il tuo menù</a>
+                <a class="btn fancy-button bg-primary px-4 me-md-3" href="{{ route('admin.foods.index') }}">
+                    <i class="fa-solid fa-pizza-slice"></i> Il tuo menù</a>
                 <a class="btn fancy-button bg-success px-4"href="{{ route('admin.foods.create') }}"><i
                         class="fa-solid fa-plus"></i> Aggiungi Piatto</a>
             </div>
