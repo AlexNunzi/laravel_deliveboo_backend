@@ -79,10 +79,11 @@
             </div>
 
             <div class="mt-4">
-                <a class="btn fancy-button bg-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
-                <button type="submit" class="btn fancy-button bg-success me-3"><i class="fa-solid fa-check"></i>
+                <button type="submit" class="btn fancy-button bg-success me-3">
+                    <i class="fa-solid fa-check"></i>
                     Salva
                 </button>
+                <a class="btn fancy-button bg-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
             </div>
         </form>
         <form id="my-form" action="{{ route('admin.foods.deleteImage', ['slug' => $food->slug]) }}" method="POST">

@@ -34,6 +34,11 @@
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
+                @guest
+                <a class="text-decoration-none text-dark dropdown-item me-3 text-end" href="http://localhost:5173/">
+                    Area utenti
+                </a>
+                @endguest
 
 
                 @auth
@@ -78,11 +83,10 @@
                                     <a class="dropdown-item d-md-none"
                                         href="{{ route('admin.foods.index') }}">{{ __('Il tuo menù') }}</a>
 
-                                    <a class="text-decoration-none text-dark dropdown-item me-3"
-                                        href="http://localhost:5173/">
-                                        Area clienti
+                                     
+                                    <a class="text-decoration-none text-dark dropdown-item me-3" href="http://localhost:5173/">
+                                        Area utenti
                                     </a>
-
                                     <a class="dropdown-item " href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

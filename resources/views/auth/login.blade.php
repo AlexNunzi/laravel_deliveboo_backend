@@ -59,13 +59,12 @@
                             </div>
 
                             <div class="mb-4 row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn fancy-button bg-primary">
+                                <div class="col-md-8 offset-md-4 ">
+                                    <button type="submit" class="btn fancy-button bg-primary me-3 mb-3 ">
                                         {{ __('Accedi') }}
                                     </button>
-                                    <span class="ms-3"></span>
 
-                                    <a class="btn fancy-button bg-success" href="{{ route('register') }}">
+                                    <a class="btn fancy-button bg-success mb-3" href="{{ route('register') }}">
                                         Oppure registrati qui
                                     </a>
 
