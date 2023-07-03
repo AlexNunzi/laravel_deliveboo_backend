@@ -63,11 +63,11 @@
                             <a class="text-decoration-none text-dark" href="{{ route('admin.foods.index') }}">Il tuo
                                 menù</a>
                         </li>
-                       
+
                     </ul>
-                    
+
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                      
+
 
                         <ul class="navbar-nav ml-auto">
 
@@ -82,18 +82,18 @@
 
                                     <a class="dropdown-item d-md-none"
                                         href="{{ route('admin.foods.index') }}">{{ __('Il tuo menù') }}</a>
+
                                      
                                     <a class="text-decoration-none text-dark dropdown-item me-3" href="http://localhost:5173/">
                                         Area utenti
                                     </a>
-                                       
                                     <a class="dropdown-item " href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     </a>
-                                   
+
 
                                     {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
                                     {{-- <a class="dropdown-item hover-dropdown"
