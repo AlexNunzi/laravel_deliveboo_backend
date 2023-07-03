@@ -29,9 +29,7 @@
         <nav id="ms-main-nav" class="navbar shadow-sm fixed-top navbar-expand-md navbar-light bg-warning shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        <h1>Deliveboo</h1>
-                    </div>
+                    <img src="{{ asset('img/deliveboo-logo.svg') }}" alt="Logo">
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
                 @guest

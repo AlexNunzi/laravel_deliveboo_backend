@@ -33,7 +33,7 @@
 
                 @if ($food->image)
                     <div class="my-img-wrapper">
-                        <img class="img-thumbnail my-img-thumb" src="{{ asset('storage/' . $food->image) }}"
+                        <img class="img-thumbnail my-img-thumb my-card-img" src="{{ asset('storage/' . $food->image) }}"
                             alt="{{ $food->name }}" />
                         <div id="my-btn" class="my-img-delete btn btn-danger" onclick="prova()">X</div>
                     </div>
