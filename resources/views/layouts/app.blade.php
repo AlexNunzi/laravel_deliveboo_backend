@@ -34,7 +34,7 @@
                 </a>
                 @guest
                     <a class="text-decoration-none text-dark dropdown-item me-3 text-end" href="http://localhost:5173/">
-                        Area utenti
+                        Home page
                     </a>
                 @endguest
 
@@ -84,7 +84,7 @@
 
                                     <a class="text-decoration-none text-dark dropdown-item me-3"
                                         href="http://localhost:5173/">
-                                        Area utenti
+                                        Home page
                                     </a>
                                     <a class="dropdown-item " href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

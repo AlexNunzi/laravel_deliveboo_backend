@@ -11,7 +11,7 @@
 <br />
 
 <div>
-    grazie per aver ordinato da noi saremo da te al più presto. Ecco il riepilogo del tuo ordine:
+    grazie per aver ordinato da noi, saremo da te al più presto. Ecco il riepilogo del tuo ordine:
 </div>
 <br /><br />
 

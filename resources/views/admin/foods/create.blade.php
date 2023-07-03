@@ -68,11 +68,12 @@
                 <label class="form-check-label" for="visibility">Visibile</label>
             </div>
             <div class="mt-4">
+                <a class="btn fancy-button bg-primary me-4" href="{{ route('admin.dashboard') }}"><i
+                    class="fa-solid fa-house"></i> Torna alla dashboard</a>
                 <button type="submit" class="btn fancy-button bg-success me-3">
                     <i class="fa-solid fa-check"></i>
                     Salva
                 </button>
-                <a class="btn fancy-button bg-primary" href="{{ route('admin.dashboard') }}">Torna alla dashboard</a>
             </div>
 
         </form>

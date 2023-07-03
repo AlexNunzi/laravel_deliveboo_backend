@@ -81,9 +81,9 @@ body{
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
- }
- 
- .fancy-button:before {
+}
+
+.fancy-button:before {
     content: "";
     position: absolute;
     top: 0;
@@ -93,12 +93,12 @@ body{
     background-color: rgba(255, 255, 255, 0.2);
     transform: skewX(-30deg);
     transition: left 0.3s ease-in-out;
- }
- 
- .fancy-button:hover {
-    transform: scale(1.1);
- }
- 
- .fancy-button:hover:before {
+}
+
+.fancy-button:hover {
+    transform: scale(1.05);
+}
+
+.fancy-button:hover:before {
     left: 100%;
- }
+}

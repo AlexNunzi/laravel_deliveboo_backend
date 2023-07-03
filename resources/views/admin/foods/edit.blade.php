@@ -35,11 +35,11 @@
                     <div class="my-img-wrapper">
                         <img class="img-thumbnail my-img-thumb my-card-img" src="{{ asset('storage/' . $food->image) }}"
                             alt="{{ $food->name }}" />
-                        <div id="my-btn" class="my-img-delete btn btn-danger" onclick="prova()">X</div>
+                        <div id="my-btn" class="my-img-delete btn btn-danger" onclick="prova()"><i class="fa-solid fa-x"></i></div>
                     </div>
                 @endif
 
-                <input type="file" class="form-control @error('image') is-invalid @enderror " id="image"
+                <input type="file" class="form-control mt-3 @error('image') is-invalid @enderror " id="image"
                     name="image">
 
                 @error('image')
@@ -79,11 +79,12 @@
             </div>
 
             <div class="mt-4">
+                <a class="btn fancy-button bg-primary me-4" href="{{ route('admin.foods.index') }}"><i
+                    class="fa-solid fa-house"></i> Torna alla dashboard</a>
                 <button type="submit" class="btn fancy-button bg-success me-3">
                     <i class="fa-solid fa-check"></i>
                     Salva
                 </button>
-                <a class="btn fancy-button bg-primary" href="{{ route('admin.foods.index') }}">Torna indietro</a>
             </div>
         </form>
         <form id="my-form" action="{{ route('admin.foods.deleteImage', ['slug' => $food->slug]) }}" method="POST">
