@@ -53,6 +53,546 @@ class OrderSeeder extends Seeder
                 'status' => true,
                 'foods' => ['Spaghetti all\'Amatriciana']
             ],
+            [
+                'order_date' => '2023-07-17 11:12:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2023-07-17 11:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-07-17 19:18:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe']
+            ],
+            [
+                'order_date' => '2023-07-17 19:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-07-17 19:40:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-07-17 20:21:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe']
+            ],
+            [
+                'order_date' => '2023-07-17 21:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-06-17 11:12:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2023-06-17 11:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-06-17 19:18:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe']
+            ],
+            [
+                'order_date' => '2023-06-17 19:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-05-17 11:06:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-05-17 11:12:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2023-05-17 11:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-05-17 19:18:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe']
+            ],
+            [
+                'order_date' => '2023-05-17 19:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-04-17 09:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-04-17 10:27:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-04-17 19:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti all\'Amatriciana', 'Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-03-17 09:27:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-03-17 11:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-02-17 11:27:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-02-17 11:45:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-02-17 12:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-02-17 13:40:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2023-01-17 11:45:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-01-17 12:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-01-17 13:40:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2023-01-17 13:55:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2023-01-17 14:22:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-12-17 11:10:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-12-17 11:27:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-12-17 12:10:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-12-17 13:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-12-17 14:22:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-11-17 11:22:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-11-17 11:52:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-11-17 11:58:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-11-17 12:08:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-11-17 13:18:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-11-17 14:29:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-10-17 11:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-10-17 12:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-10-17 13:22:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-10-17 14:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-09-17 12:22:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-09-17 13:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-09-17 14:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-08-17 11:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-08-17 11:28:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-08-17 12:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-08-17 19:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-07-17 11:10:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-07-17 11:27:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-07-17 12:10:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-07-17 13:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-07-17 14:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-06-17 12:10:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
+            [
+                'order_date' => '2022-06-17 13:22:13',
+                'customer_name' => 'Brambilla Fumagalli',
+                'customer_address' => 'Via Giovanni da Procida',
+                'customer_email' => 'brambilla.fumagalli@hotmail.it',
+                'customer_phone_number' => '3255610952',
+                'status' => true,
+                'foods' => ['Spaghetti alla carbonara']
+            ],
+            [
+                'order_date' => '2022-06-17 14:22:13',
+                'customer_name' => 'Ajeje Brazorf',
+                'customer_address' => 'Via dal tram',
+                'customer_email' => 'ajeje.brazorf@hotmail.it',
+                'customer_phone_number' => '3335021586',
+                'status' => true,
+                'foods' => ['Spaghetti cacio e pepe', 'Spaghetti alla carbonara', 'Spaghetti all\'Amatriciana']
+            ],
         ];
 
         foreach ($orders as $order) {

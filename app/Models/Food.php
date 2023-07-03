@@ -17,12 +17,13 @@ class Food extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
 
-    public static function generateSlug(string $title)
+    public static function generateSlug(string $title, int $restaurantId)
     {
-        return Str::slug($title, '-');
+        $newSlug = Str::slug($title, '-');
+        return $restaurantId . '-' . $newSlug;
     }
 
     protected $fillable = [

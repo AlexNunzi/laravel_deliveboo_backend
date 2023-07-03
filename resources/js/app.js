@@ -5,9 +5,20 @@ import.meta.glob([
     '../img/**'
 ])
 
-const btnDelete = document.getElementById('my-btn');
+const deleteButtons= document.querySelectorAll('.form_delete_food button[type="submit"]');
 
-btnDelete.addEventListener('click', function () {
-    const formDelete = document.getElementById('my-form');
-    formDelete.submit();
+deleteButtons.forEach(button =>{
+    button.addEventListener('click', event=>{
+        event.preventDefault();
+
+        const modal = document.getElementById('confirmModal');
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
+
+        const confirmDeleteBtn = modal.querySelector('.btn.btn-danger');
+
+        confirmDeleteBtn.addEventListener('click', ()=>{
+            button.parentElement.submit();
+        });
+    });
 });

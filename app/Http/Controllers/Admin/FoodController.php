@@ -59,11 +59,11 @@ class FoodController extends Controller
 
         $form_data['restaurant_id'] = $user->restaurant->id;
 
-        $form_data['slug'] = Food::generateSlug($request->name);
+        $form_data['slug'] = Food::generateSlug($request->name, $user->restaurant->id);
 
         $checkPost = Food::where('slug', $form_data['slug'])->first();
         if ($checkPost) {
-            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo progetto, cambia il titolo']);
+            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo piatto, cambia il nome']);
         }
 
         if ($request->hasFile('image')) {
@@ -73,7 +73,7 @@ class FoodController extends Controller
 
         $newFood = Food::create($form_data);
 
-        return redirect()->route('admin.foods.show', ['food' => $newFood->slug]);
+        return redirect()->route('admin.foods.index');
     }
 
     /**
@@ -84,7 +84,11 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return view('admin.foods.show', compact('food'));
+        if ($food->restaurant_id == Auth::user()->restaurant->id) {
+            return view('admin.foods.show', compact('food'));
+        } else {
+            return view('admin.error');
+        }
     }
 
     /**
@@ -95,7 +99,11 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        return view('admin.foods.edit', compact('food'));
+        if ($food->restaurant_id == Auth::user()->restaurant->id) {
+            return view('admin.foods.edit', compact('food'));
+        } else {
+            return view('admin.error');
+        }
     }
 
     /**
@@ -107,35 +115,39 @@ class FoodController extends Controller
      */
     public function update(UpdateFoodRequest $request, Food $food)
     {
-        $validated_data = $request->validated();
+        if ($food->restaurant_id == Auth::user()->restaurant->id) {
 
-        if ($request->has('visibility')) {
-            $validated_data['visibility'] = true;
-        } else {
-            $validated_data['visibility'] = false;
-        }
-        $validated_data['slug'] = Food::generateSlug($request->name);
+            $validated_data = $request->validated();
 
-        $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', $food->id)->first();
+            if ($request->has('visibility')) {
+                $validated_data['visibility'] = true;
+            } else {
+                $validated_data['visibility'] = false;
+            }
+            $validated_data['slug'] = Food::generateSlug($request->name, $food->restaurant->id);
+            $checkFood = Food::where('slug', $validated_data['slug'])->where('id', '<>', $food->id)->first();
 
-        if ($checkFood) {
-            return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
-        }
-        
-
-
-        if ($request->hasFile('image')) {
-
-            if ($food->image) {
-                Storage::delete($food->image);
+            if ($checkFood) {
+                return back()->withInput()->withErrors(['slug' => 'Non è possibile generare lo slug!']);
             }
 
-            $img_path = Storage::put('image', $request->image);
-            $validated_data['image'] = $img_path;
-        }
 
-        $food->update($validated_data);
-        return redirect()->route('admin.foods.show', ['food' => $food->slug]);
+
+            if ($request->hasFile('image')) {
+
+                if ($food->image) {
+                    Storage::delete($food->image);
+                }
+
+                $img_path = Storage::put('image', $request->image);
+                $validated_data['image'] = $img_path;
+            }
+
+            $food->update($validated_data);
+            return redirect()->route('admin.foods.index');
+        } else {
+            return view('admin.error');
+        }
     }
 
     /**
@@ -146,13 +158,18 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        if ($food->image) {
-            Storage::delete($food->image);
+        if ($food->restaurant_id == Auth::user()->restaurant->id) {
+            if ($food->image) {
+                Storage::delete($food->image);
+            }
+            $food->delete();
+            return redirect()->route('admin.foods.index');
+        } else {
+            return view('admin.error');
         }
-        $food->delete();
-        return redirect()->route('admin.foods.index');
     }
-    public function deleteImage($slug) {
+    public function deleteImage($slug)
+    {
 
         $food = Food::where('slug', $slug)->firstOrFail();
 
@@ -163,6 +180,5 @@ class FoodController extends Controller
         }
 
         return redirect()->route('admin.foods.edit', $food->slug);
-
     }
 }
