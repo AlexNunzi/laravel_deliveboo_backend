@@ -45,7 +45,7 @@ class RegisteredUserController extends Controller
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 'address' => ['required', 'string', 'max:100'],
                 'p_iva' => ['required', 'string', 'max:12'],
-                'image' => ['nullable', 'image', 'max:1024'],
+                'image' => ['nullable', 'image', 'max:2048'],
                 'decription' => ['nullable', 'string', 'max:2000'],
                 'type' => ['required', 'exists:types,id'],
 

@@ -28,8 +28,8 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" autocomplete="name" autofocus required minlength="2"
-                                        maxlength="255">
+                                        value="{{ old('name', 'Brambilla Fumagalli') }}" autocomplete="name" autofocus
+                                        required minlength="2" maxlength="255">
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -45,8 +45,8 @@
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text"
                                         class="form-control @error('restaurant_name') is-invalid @enderror"
-                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required minlength="2"
-                                        maxlength="100">
+                                        name="restaurant_name" value="{{ old('restaurant_name', 'Il telone') }}" required
+                                        minlength="2" maxlength="100">
 
                                     @error('restaurant_name')
                                         <span class="invalid-feedback" role="alert">
@@ -63,8 +63,8 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" autocomplete="address" required minlength="2"
-                                        maxlength="100">
+                                        value="{{ old('address', 'Via Giovanni da Procida') }}" autocomplete="address"
+                                        required minlength="2" maxlength="100">
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -81,8 +81,8 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" minlength="2"
-                                        maxlength="12">
+                                        value="{{ old('p_iva', '313131313131') }}" required autocomplete="p_iva"
+                                        minlength="2" maxlength="12">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -98,7 +98,8 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" maxlength="255">
+                                        value="{{ old('email', 'brambilla@iltelone.it') }}" required autocomplete="email"
+                                        maxlength="255">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -115,7 +116,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password" minlength="8">
+                                        required autocomplete="new-password" minlength="8" value="ciaociao">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -131,7 +132,8 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password" minlength="8">
+                                        name="password_confirmation" required autocomplete="new-password" minlength="8"
+                                        value="ciaociao">
                                     <span class="d-none text-danger password_equal_register fs-6">Le password inserite devo
                                         essere uguali</span>
                                 </div>
@@ -149,7 +151,7 @@
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrizione</label>
                                 <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-                                    name="description" maxlength="1000">{{ old('description') }}</textarea>
+                                    name="description" maxlength="1000">{{ old('description', 'Voglia di cucina italiana? Da Il telone puoi trovare solo i migliori piatti. Prendi pure una cadrega e accomodati!') }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

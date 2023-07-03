@@ -20,7 +20,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Nome (*)</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                    value="{{ old('name') }}" required minlength="5" maxlength="100">
+                    value="{{ old('name', 'Pasta con le sarde') }} " required minlength="5" maxlength="100">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -42,7 +42,7 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                    maxlength="1000">{{ old('description') }}</textarea>
+                    maxlength="1000">{{ old('description', 'Un bacile di pasta con il finocchietto fresco come lo metteva la nonna') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -54,7 +54,7 @@
                 <label for="price" class="form-label">Prezzo (*)</label>
                 <input type="number" min="0" max="99.99" step="0.01"
                     class="form-control @error('price') is-invalid @enderror" id="price" name="price"
-                    value="{{ old('price') }}" required>
+                    value="{{ old('price', '10.00') }}" required>
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
