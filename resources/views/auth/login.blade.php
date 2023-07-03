@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Accedi') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body pb-0">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -65,7 +65,7 @@
                                     </button>
 
                                     <a class="btn fancy-button bg-success mb-3" href="{{ route('register') }}">
-                                        Oppure registrati qui
+                                        Registrati
                                     </a>
 
                                 </div>
