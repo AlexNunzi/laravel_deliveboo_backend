@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/svg+xml" href="img/hamburger.png" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'DeliveBoo') }}</title>
 
 
     <!-- Fonts -->
@@ -35,9 +35,9 @@
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
                 @guest
-                <a class="text-decoration-none text-dark dropdown-item me-3 text-end" href="http://localhost:5173/">
-                    Area utenti
-                </a>
+                    <a class="text-decoration-none text-dark dropdown-item me-3 text-end" href="http://localhost:5173/">
+                        Area utenti
+                    </a>
                 @endguest
 
 
@@ -83,8 +83,9 @@
                                     <a class="dropdown-item d-md-none"
                                         href="{{ route('admin.foods.index') }}">{{ __('Il tuo menù') }}</a>
 
-                                     
-                                    <a class="text-decoration-none text-dark dropdown-item me-3" href="http://localhost:5173/">
+
+                                    <a class="text-decoration-none text-dark dropdown-item me-3"
+                                        href="http://localhost:5173/">
                                         Area utenti
                                     </a>
                                     <a class="dropdown-item " href="{{ route('logout') }}"
