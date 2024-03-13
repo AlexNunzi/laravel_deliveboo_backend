@@ -25,7 +25,9 @@ class OrderRequest extends FormRequest
     {
         return [
             'token' => 'required',
-            'food_ids' => 'required',
+            'foods_info' => 'required',
+            'foods_info.*.id' => 'required|numeric',
+            'foods_info.*.quantity' => 'required|numeric|gt:0',
             'customer_name' => 'required',
             'customer_phone_number' => 'required|numeric',
             'customer_address' => 'required',
@@ -35,7 +37,7 @@ class OrderRequest extends FormRequest
 
     public function messages()
     {
-        return[
+        return [
             'customer_name.required' => 'Il nome è obbligatorio',
             'customer_phone_number.required' => 'Il numero di telefono è obbligatorio',
             'customer_phone_number.numeric' => 'Il numero di telefono non può contenere lettere',

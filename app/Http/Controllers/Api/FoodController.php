@@ -8,26 +8,22 @@ use App\Models\Restaurant;
 
 class FoodController extends Controller
 {
-    public function index($slug) {
-
-    
-
+    public function index($slug)
+    {
         $foods = DB::table('restaurants')
-        ->select('*')
-        ->join('food','restaurant_id','=','restaurants.id')
-        ->where('restaurants.slug','=',$slug)
-        ->where('food.visibility','=',1)
-        ->get();
+            ->select('*')
+            ->join('food', 'restaurant_id', '=', 'restaurants.id')
+            ->where('restaurants.slug', '=', $slug)
+            ->where('food.visibility', '=', 1)
+            ->get();
 
         $restaurant = Restaurant::where("slug", $slug)->first();
 
-
         return response()->json([
-            'success' => true,
             'results' => [
                 "restaurant" => $restaurant,
                 "foods" => $foods
-                ]
+            ]
         ]);
     }
 }

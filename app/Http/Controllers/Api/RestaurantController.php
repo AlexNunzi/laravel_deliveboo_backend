@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -23,7 +22,6 @@ class RestaurantController extends Controller
         })->having('food_count', '>', 0)->get();
 
         return response()->json([
-            'success' => true,
             'results' => $restaurants
         ]);
     }

@@ -3,17 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Mail\NewContact;
+use App\Http\Requests\Api\OrderRequest;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
-
+use Ramsey\Uuid\Type\Decimal;
 
 class OrderController extends Controller
 {
@@ -26,14 +22,11 @@ class OrderController extends Controller
     {
         $restaurants = Restaurant::where('user_id', Auth::user()->id)->first();
 
-        $orders = Order::with('food')->whereHas('food', function (Builder $query) use ($restaurants){
-           $query->where('restaurant_id' , $restaurants->id);
-
+        $orders = Order::with('food')->whereHas('food', function (Builder $query) use ($restaurants) {
+            $query->where('restaurant_id', $restaurants->id);
         })->orderBy('order_date', 'desc')->get();
 
         return view('admin.orders.index', compact('orders'));
-
-
     }
 
     /**
@@ -44,6 +37,37 @@ class OrderController extends Controller
     public function create()
     {
         //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\Api\OrderRequest  $request
+     * @param  \Ramsey\Uuid\Type\Decimal  $totalPrice
+     * @return \App\Models\Order
+     */
+    public function store(OrderRequest $request, Decimal $totalPrice)
+    {
+        $orderInformation = [
+            'customer_name' => $request->customer_name,
+            'customer_phone_number' => $request->customer_phone_number,
+            'customer_address' => $request->customer_address,
+            'customer_email' => $request->customer_email,
+            'order_date' => date("Y-m-d H:i:s"),
+            'total_price' => $totalPrice
+        ];
+
+        $newOrder = new Order();
+
+        $newOrder->fill($orderInformation);
+        $newOrder->status = true;
+        $newOrder->save();
+
+        foreach ($request->foods_info as $food) {
+            $newOrder->food()->attach($food['id'], ['quantity' => $food['quantity']]);
+        }
+
+        return $newOrder;
     }
 
     /**

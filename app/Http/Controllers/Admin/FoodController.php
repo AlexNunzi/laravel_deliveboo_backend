@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFoodRequest;
 use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
-use App\Models\Restaurant;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -168,6 +166,7 @@ class FoodController extends Controller
             return view('admin.error');
         }
     }
+
     public function deleteImage($slug)
     {
 
@@ -180,5 +179,16 @@ class FoodController extends Controller
         }
 
         return redirect()->route('admin.foods.edit', $food->slug);
+    }
+
+    public function getDbFoods($foodIds)
+    {
+        foreach ($foodIds as $food) {
+            $food_ids[] = $food['id'];
+        }
+
+        $food_ids = array_unique($food_ids);
+
+        return Food::whereIn('id', $food_ids)->get();
     }
 }
